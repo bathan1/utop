@@ -94,6 +94,117 @@ behave exactly the same as them with the exception of `find` which throws instea
 search element could not be found instead of returning `undefined`. Any deviations such as this will be documented
 in the function's docstrings.
 
+## Async API
+Function overloads for the standard helper methods in Utop.js can be roughly split up into two categories:
+
+1. Compile-time only overloads
+2. Runtime overloads
+
+### Compile-time only
+Compile-time only overloads refer to function overloads where we don't
+have to touch the implementation to satisfy its signature.
+
+In [`find.js`](./src/find.ts), for example, we can see that it includes the following overloads:
+
+```ts
+// src/find.ts
+export function find<T, S extends T>(
+  predicate: (value: T, index: number) => value is S,
+  iterable: Iterable<T>
+): S;
+export function find<T>(
+  predicate: (value: T, index: number) => unknown,
+  iterable: Iterable<T>
+): T;
+```
+
+So when we use an explicit type-guard in `find`, typescript is able
+to infer that the returned value is the asserted type `S`:
+
+```ts
+const numsOrStrings: string | number[] = Array.from({ length: 5}, (, i) => {
+  if (i % 2 === 0) {
+    return String(i);
+  }
+  return i;
+});
+
+const string = find(val => typeof val === "string", numsOrStrings);
+```
+
+This overload doesn't cost us anything at runtime because the
+implementation would remain the same if we removed it, as the `if(predicate)`
+branch hits for both explicit boolean typeguards and truthy returning values.
+
+```ts
+export function find<T>(
+  predicate: (value: T, index: number) => unknown,
+  iterable: Iterable<T> | AsyncIterable<T>,
+): Promisable<T> {
+  if (Symbol.asyncIterator in iterable) {
+    // async case omitted
+  }
+  let index = 0;
+
+  for (const value of iterable) {
+    if (predicate(value, index++)) {
+      return value;
+    }
+  }
+
+  throw new RangeError("No matching value found");
+}
+```
+
+### Runtime overloads
+`find` also exports the following overloads:
+
+```ts
+export function find<T, S extends T>(
+  predicate: (value: T, index: number) => value is S,
+  iterable: AsyncIterable<T>
+): Promise<S>;
+export function find<T>(
+  predicate: (value: T, index: number) => unknown,
+  iterable: AsyncIterable<T>
+): Promise<T>;
+```
+
+I refer to these as *runtime* overloads because if we wanted
+our implementation to fulfill this call pattern, we need
+to return a promise, which `find` does not by default, meaning we
+have to make a runtime change, which comes with some slight overhead.
+What that runtime change is exactly varies depending on how each 
+function defines its async call semantics, but it usually comes down to
+an `if` check or two:
+
+```ts
+export function find<T>(
+  predicate: (value: T, index: number) => unknown,
+  iterable: Iterable<T> | AsyncIterable<T>,
+): Promisable<T> {
+  if (Symbol.asyncIterator in iterable) {
+    return (async () => {
+      let index = 0;
+
+      for await (const value of iterable) {
+        if (predicate(value, index++)) {
+          return value;
+        }
+      }
+
+      throw new RangeError("No matching value found");
+    })();
+  }
+  // continue sync case
+}
+```
+
+You don't really need to remember that pattern from here because each
+function will have docs explaining its async call pattern, if they
+even come with one (some intentially omit it). All of the "standard"
+iterator helper methods come with an async signature.
+
 ## Installation
 The primary release channel is the GitHub repository as a `shadcn` [registry](https://ui.shadcn.com/docs/registry/github),
 which assumes the following:
@@ -107,15 +218,15 @@ Each function is an individual registry item with the naming convention of `${FU
 pnpm dlx shadcn@latest add bathan1/utop/map.js
 ```
 
-`shadcn` will take care of writing the `utop` directory to your `@lib` folder for your project (.e.g. `@/lib/utop`), which is where
-all the library functions can be imported from:
+`shadcn` will take care of writing the `utop` directory to your `@lib` folder
+for your project (.e.g. `@/lib/utop`) along with any dependencies, which is
+where all the library functions can be imported from:
 
 ```ts
 import { map } from "@/lib/utop/map.js";
 ```
 
-As of the time of writing, there is a [known issue](https://github.com/vercel/next.js/issues/82945) on Next.js
-with importing native relative path modules. The workaround is to use the following turbopack loader.
+As of the time of writing, there is a [known issue](https://github.com/vercel/next.js/issues/82945) in Next.js with importing native relative path modules. The workaround is to use a turbopack loader rule that looks something like this:
 
 ```js
 // import-rewrite-loader.cjs

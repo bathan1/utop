@@ -1,16 +1,7 @@
 /**
  * `chunk(limit, iterable)` is a new generator that yields elements of `ITERABLE` materialized as arrays of max size `LIMIT`.
  * 
- * ### Installation
- * ```bash
- * pnpm dlx shadcn@latest add bathan1/utop/chunk.js
- * ```
- * 
  * ### Usage
- * ```ts
- * import { chunk } from "@/lib/utop/chunk.js";
- * ```
- * 
  * ```ts
  * const lotsOfRows = createLotsOfData();
  * const insertableChunks = chunk(500, lotsOfRows);
@@ -21,12 +12,22 @@
  *     .execute();
  * }
  * ```
- *
- * ### Helpers
- * You can the following helper properties attached to the `chunk` function:
- *
- * chunk
- * └── chunk.async
+ * 
+ * ### Async
+ * `chunk` returns an {@link AsyncGenerator} instead of the sync version
+ * when `ITERABLE` is an async iterable.
+ * 
+ * ```ts
+ * async function* fetchTodos(ids: number[]) {
+ *   for (const id of ids) {
+ *     yield await fetch(`https://dummyjson.com/todos/${id}`)
+ *       .then(async res => await res.json() as { todo: string; });
+ *   }
+ * }
+ * 
+ * const todos = fetchTodos([1, 2, 3]);
+ * const todosGrouped = chunk(2, todos);
+ * ```
  * 
  * ### Examples
  * 
@@ -56,56 +57,87 @@
  * const chunked = () => Array.from(chunk(limit, iterable));
  * expect(chunked).toThrow(RangeError);
  * ```
+ * 
+ * @example
+ * It chunks async iterables
+ * ```ts
+ * async function* count(n: number) {
+ *   for (let i = 0; i < n; i++) {
+ *     yield i + 1;
+ *   }
+ * }
+ * 
+ * const limit = 2;
+ * const asyncIterable = count(10);
+ * 
+ * const chunked = await Array.fromAsync(chunk(limit, asyncIterable));
+ * expect(chunked).toEqual([
+ *   [1, 2],
+ *   [3, 4],
+ *   [5, 6],
+ *   [7, 8],
+ *   [9, 10]
+ * ]);
+ * ```
  */
-export function* chunk<T>(
+export function chunk<T>(
   limit: number,
   iterable: Iterable<T, unknown, unknown>,
-): Generator<T[], void, unknown> {
-  if (limit <= 0) {
-    throw new RangeError("chunk LIMIT must be greater than 0", {
-      cause: limit,
-    });
-  }
-  let chunks: T[] = [];
-
-  for (const x of iterable) {
-    chunks.push(x);
-
-    if (chunks.length >= limit) {
-      yield chunks;
-      chunks = [];
-    }
-  }
-
-  if (chunks.length > 0) {
-    yield chunks;
-  }
-}
-
-/**
- * `chunk.async(limit, iterable)` is a new **async** generator that yields elements of `ITERABLE` materialized as arrays of max size `LIMIT`.
- */
-chunk.async = async function* chunkAsync<T>(
+): Generator<T[], void, unknown>;
+export function chunk<T>(
   limit: number,
-  iterable: AsyncIterable<T, unknown, unknown>
-): AsyncGenerator<T[], void, unknown> {
-  if (limit <= 0) {
-    throw new RangeError("chunk LIMIT must be greater than 0", {
-      cause: limit,
-    });
+  iterable: AsyncIterable<T, unknown, unknown>,
+): AsyncGenerator<T[], void, unknown>;
+export function chunk<T>(
+  limit: number,
+  iterable: Iterable<T> | AsyncIterable<T>,
+): Generator<T[]> | AsyncGenerator<T[]> {
+  if (Symbol.asyncIterator in iterable) {
+    return (async function* () {
+      if (limit <= 0) {
+        throw new RangeError("chunk LIMIT must be greater than 0", {
+          cause: limit,
+        });
+      }
+
+      let chunk: T[] = [];
+
+      for await (const x of iterable) {
+        chunk.push(x);
+
+        if (chunk.length >= limit) {
+          yield chunk;
+          chunk = [];
+        }
+      }
+
+      if (chunk.length) {
+        yield chunk;
+      }
+    })();
   }
-  let chunks: T[] = [];
 
-  for await (const x of iterable) {
-    chunks.push(x);
-
-    if (chunks.length >= limit) {
-      yield chunks;
-      chunks = [];
+  return (function* () {
+    if (limit <= 0) {
+      throw new RangeError("chunk LIMIT must be greater than 0", {
+        cause: limit,
+      });
     }
-  }
 
-  if (chunks.length > 0) {
-    yield chunks;
-  }
+    let chunk: T[] = [];
+
+    for (const x of iterable) {
+      chunk.push(x);
+
+      if (chunk.length >= limit) {
+        yield chunk;
+        chunk = [];
+      }
+    }
+
+    if (chunk.length) {
+      yield chunk;
+    }
+  })();
 }
+

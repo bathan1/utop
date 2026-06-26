@@ -10,7 +10,7 @@ describe("find(callbackfn, iterable)", () => {
     expect(() => find((x) => x > 4, [1, 2, 3])).toThrow(RangeError);
   });
   
-  it("returns synchronously when for async ITERABLE that also have a sync iterator symbol", () => {
+  it("returns asynchronously when for async ITERABLE even when they also have a sync iterator symbol", () => {
     const iterable = {
       async *[Symbol.asyncIterator]() {
         yield 1;

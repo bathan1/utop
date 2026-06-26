@@ -35,9 +35,9 @@ describe("chunk(limit, iterable)", () => {
     }
 
     const limit = 2;
-    const iterable = count(10);
+    const asyncIterable = count(10);
 
-    const chunked = await Array.fromAsync(chunk.async(limit, iterable));
+    const chunked = await Array.fromAsync(chunk(limit, asyncIterable));
     expect(chunked).toEqual([
       [1, 2],
       [3, 4],
