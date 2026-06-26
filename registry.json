@@ -20,7 +20,8 @@
       "files": [
         {
           "path": "./src/types.ts",
-          "type": "registry:lib"
+          "type": "registry:lib",
+          "target": "@lib/utop/types.ts"
         }
       ]
     },
@@ -30,7 +31,8 @@
       "files": [
         {
           "path": "./src/map.ts",
-          "type": "registry:lib"
+          "type": "registry:lib",
+          "target": "@lib/utop/map.ts"
         }
       ]
     },
@@ -40,7 +42,8 @@
       "files": [
         {
           "path": "./src/not.ts",
-          "type": "registry:lib"
+          "type": "registry:lib",
+          "target": "@lib/utop/not.ts"
         }
       ]
     },
@@ -50,7 +53,8 @@
       "files": [
         {
           "path": "./src/zip.ts",
-          "type": "registry:lib"
+          "type": "registry:lib",
+          "target": "@lib/utop/zip.ts"
         }
       ]
     }
