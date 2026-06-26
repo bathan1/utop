@@ -18,7 +18,7 @@
  *   await tx
  *     .insertInto("some-table")
  *     .values(chunk)
- *     .execute()
+ *     .execute();
  * }
  * ```
  *

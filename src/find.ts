@@ -1,7 +1,10 @@
+import type { Promisable } from "./types.js";
 
 /**
  * `find(predicate, iterable)` returns the first `value` in `ITERABLE` that satisfies `PREDICATE(x)` or
- * **throws** a {@link RangeError} if that `value` can't be found.
+ * **throws** if that `value` can't be found. When `ITERABLE` is asy
+ *
+ * @throws {@link RangeError}
  * 
  * ### Installation
  * ```bash
@@ -39,19 +42,44 @@ export function find<T, S extends T>(
   predicate: (value: T, index: number) => value is S,
   iterable: Iterable<T>
 ): S;
+export function find<T, S extends T>(
+  predicate: (value: T, index: number) => value is S,
+  iterable: AsyncIterable<T>
+): Promise<S>;
 export function find<T>(
   predicate: (value: T, index: number) => unknown,
   iterable: Iterable<T>
 ): T;
+export function find<T>(
+  predicate: (value: T, index: number) => unknown,
+  iterable: AsyncIterable<T>
+): Promise<T>;
 
-export function find<T>(predicate: (value: T, index: number) => unknown, iterable: Iterable<T>): T {
-  let index = 0;
+export function find<T>(
+  predicate: (value: T, index: number) => unknown,
+  iterable: Iterable<T> | AsyncIterable<T>,
+): Promisable<T> {
+  if (Symbol.iterator in iterable) {
+    let index = 0;
 
-  for (const value of iterable) {
-    if (predicate(value, index++)) {
-      return value;
+    for (const value of iterable) {
+      if (predicate(value, index++)) {
+        return value;
+      }
     }
+
+    throw new RangeError("No matching value found");
   }
 
-  throw new RangeError("No matching value found");
+  return (async () => {
+    let index = 0;
+
+    for await (const value of iterable) {
+      if (predicate(value, index++)) {
+        return value;
+      }
+    }
+
+    throw new RangeError("No matching value found");
+  })();
 }
