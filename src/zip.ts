@@ -74,8 +74,8 @@ type ZipOutput<
 > = O extends { mode: "longest" } ? ZipIndexedLongest<T, ZipPadding<O>> : ZipIndexed<T>;
 
 /**
- * `zip(iterables, { mode?; padding? }?)` yields zip-aggregated elements from `ITERABLES`
- * with excess element behavior determined based on `MODE`, if provided, where:
+ * `zip(iterables, options?)` yields zip-aggregated elements from `ITERABLES` using `OPTIONS`.
+ * Excess element behavior is determined by `OPTIONS.mode`, where:
  *
  * - `shortest`: stops when any iterable ends and is also the default
  * - `longest`: continues until all iterables end

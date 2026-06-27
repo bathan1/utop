@@ -1,4 +1,4 @@
-import type { Promisable } from "./types";
+import type { Promisable } from "./types.js";
 
 type BoundMap<T, U> = {
   (iterable: AsyncIterable<T>): AsyncGenerator<Awaited<U>, void, unknown>;
@@ -10,16 +10,16 @@ type BoundMap<T, U> = {
  */
 type Map = {
   <T, U>(
-    callbackFn: (el: T, index: number) => Promisable<U>,
+    callbackfn: (value: T, index: number) => Promisable<U>,
     iterable: AsyncIterable<T>
   ): AsyncGenerator<Awaited<U>, void, unknown>;
 
   <T, U>(
-    callbackFn: (el: T, index: number) => U,
+    callbackfn: (value: T, index: number) => U,
     iterable: Iterable<T>
   ): Generator<U, void, unknown>;
 
-  bind<T, U>(this: Map, thisArg: null, callbackFn: (el: T, index: number) => U): BoundMap<T, U>;
+  bind<T, U>(this: Map, thisArg: null, callbackfn: (value: T, index: number) => U): BoundMap<T, U>;
 };
 
 /**
@@ -126,22 +126,22 @@ type Map = {
  * ```
  */
 export const map: Map = (<T, U>(
-  callbackfn: (el: T, index: number) => Promisable<U>,
+  callbackfn: (value: T, index: number) => Promisable<U>,
   iterable: Iterable<T> | AsyncIterable<T>
 ): Generator<U, void, unknown> | AsyncGenerator<U, void, unknown> => {
   if (Symbol.asyncIterator in iterable) {
     return (async function* map() {
       let index = 0;
-      for await (const el of iterable) {
-        yield callbackfn(el, index++);
+      for await (const value of iterable) {
+        yield callbackfn(value, index++);
       }
     })();
   }
 
   return (function* map() {
     let index = 0;
-    for (const el of iterable) {
-      yield callbackfn(el, index++) as U;
+    for (const value of iterable) {
+      yield callbackfn(value, index++) as U;
     }
   })();
 }) as Map;

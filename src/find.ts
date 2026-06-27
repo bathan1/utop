@@ -40,10 +40,7 @@ import type { Promisable } from "./types.js";
  * console.log(firstOdd) // 1
  * ```
  *
- * There is no overload to handle async `PREDICATE`. If you return
- * a Promise from `PREDICATE`, then the first value will
- * evaluate out to `true` because a Promise is an object, which is truthy.
- * So don't do that and take out the async work from `CALLBACKFN`.
+ * When `ITERABLE` is async, `find` also awaits `PREDICATE`.
  *
  * ### Examples
  *
@@ -72,10 +69,10 @@ import type { Promisable } from "./types.js";
  *     yield 1;
  *     yield 2;
  *     yield 3;
- *   }
- * }
+ *   },
+ * };
  *
- * const syncOverridenPromise = find(x => x > 2, iterable);
+ * const syncOverridenPromise = find((x) => x > 2, iterable);
  * expect(syncOverridenPromise).toBeInstanceOf(Promise);
  * expect(await syncOverridenPromise).toEqual(3);
  * ```
@@ -88,16 +85,27 @@ import type { Promisable } from "./types.js";
  *     yield 1;
  *     yield 2;
  *     yield 3;
- *   }
- * }
+ *   },
+ * };
  *
- * const promise = find(x => x > 2, iterable);
+ * const promise = find((x) => x > 2, iterable);
  * expect(promise).toBeInstanceOf(Promise);
  * expect(await promise).toEqual(3);
  *
  * // no await on async functions it just checks for truthiness immediately
- * const notPromise = find(async x => x > 2, [1, 2, 3]);
+ * const notPromise = find(async (x) => x > 2, [1, 2, 3]);
  * expect(notPromise).toEqual(1);
+ * ```
+ *
+ * @example
+ * It awaits `PREDICATE` for async `ITERABLE`
+ * ```ts
+ * async function* values() {
+ *   yield 1;
+ *   yield 2;
+ * }
+ *
+ * expect(await find(async (value) => value === 2, values())).toBe(2);
  * ```
  */
 export function find<T, S extends T>(
@@ -105,7 +113,7 @@ export function find<T, S extends T>(
   iterable: AsyncIterable<T>
 ): Promise<S>;
 export function find<T>(
-  predicate: (value: T, index: number) => unknown,
+  predicate: (value: T, index: number) => Promisable<unknown>,
   iterable: AsyncIterable<T>
 ): Promise<T>;
 export function find<T, S extends T>(
@@ -123,7 +131,7 @@ export function find<T>(
       let index = 0;
 
       for await (const value of iterable) {
-        if (predicate(value, index++)) {
+        if (await predicate(value, index++)) {
           return value;
         }
       }

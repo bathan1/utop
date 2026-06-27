@@ -46,4 +46,13 @@ describe("find(callbackfn, iterable)", () => {
     const notPromise = find(async (x) => x > 2, [1, 2, 3]);
     expect(notPromise).toEqual(1);
   });
+
+  it("awaits `PREDICATE` for async `ITERABLE`", async () => {
+    async function* values() {
+      yield 1;
+      yield 2;
+    }
+
+    expect(await find(async (value) => value === 2, values())).toBe(2);
+  });
 });

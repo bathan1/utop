@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { forEach } from "./forEach";
+import { forEach } from "./forEach.js";
 
 describe("forEach(callbackfn, iterable)", () => {
   it("immediately consumes the iterable", () => {

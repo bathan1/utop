@@ -22,6 +22,6 @@ describe("take(limit, iterable)", () => {
       }
     }
 
-    expect(await Array.fromAsync(take(2, count()))).toEqual([1, 2])
-  })
+    expect(await Array.fromAsync(take(2, count()))).toEqual([1, 2]);
+  });
 });

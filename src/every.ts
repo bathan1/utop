@@ -56,11 +56,22 @@
  *   yield "world";
  * }
  *
- * expect(await every(x => x.length === 5, messageQueue()))
+ * expect(await every((x) => x.length === 5, messageQueue()));
+ * ```
+ *
+ * @example
+ * It awaits `PREDICATE` for async `ITERABLE`
+ * ```ts
+ * async function* values() {
+ *   yield 1;
+ *   yield 2;
+ * }
+ *
+ * expect(await every(async (value) => value > 0, values())).toBe(true);
  * ```
  */
-export function every<T, S extends T>(
-  predicate: (value: T, index: number) => unknown,
+export function every<T>(
+  predicate: (value: T, index: number) => Promisable<unknown>,
   iterable: AsyncIterable<T>
 ): Promise<boolean>;
 export function every<T, S extends T>(
@@ -73,14 +84,14 @@ export function every<T>(
 ): boolean;
 
 export function every(
-  predicate: (value: unknown, index: number) => unknown,
+  predicate: (value: unknown, index: number) => Promisable<unknown>,
   iterable: Iterable<unknown> | AsyncIterable<unknown>
 ): boolean | Promise<boolean> {
   if (Symbol.asyncIterator in iterable) {
     return (async () => {
       let index = 0;
-      for await (const x of iterable) {
-        if (!predicate(x, index++)) {
+      for await (const value of iterable) {
+        if (!(await predicate(value, index++))) {
           return false;
         }
       }
@@ -88,10 +99,11 @@ export function every(
     })();
   }
   let index = 0;
-  for (const x of iterable) {
-    if (!predicate(x, index++)) {
+  for (const value of iterable) {
+    if (!predicate(value, index++)) {
       return false;
     }
   }
   return true;
 }
+import type { Promisable } from "./types.js";
