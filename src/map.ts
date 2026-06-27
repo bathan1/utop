@@ -1,34 +1,39 @@
 import type { Promisable } from "./types";
 
+type BoundMap<T, U> = {
+  (iterable: AsyncIterable<T>): AsyncGenerator<Awaited<U>, void, unknown>;
+  (iterable: Iterable<T>): Generator<U, void, unknown>;
+};
+
+/**
+ * We have to type out `map` explicitly if we want to get nice type inference with `.bind`
+ */
 type Map = {
   <T, U>(
-    callbackfn: (el: T, index: number) => U,
-    iterable: Iterable<T>,
+    callbackFn: (el: T, index: number) => Promisable<U>,
+    iterable: AsyncIterable<T>
+  ): AsyncGenerator<Awaited<U>, void, unknown>;
+
+  <T, U>(
+    callbackFn: (el: T, index: number) => U,
+    iterable: Iterable<T>
   ): Generator<U, void, unknown>;
 
-  /**
-   * `map.async(callbackfn, iterable)` is the async sequence `CALLBACKFN(x1), CALLBACKFN(x2), ..., CALLBACKFN(xn)` for each `xi` in `ITERABLE`.
-   */
-  async<T, U>(
-    callbackFn: (el: T, index: number) => Promisable<U>,
-    iterable: Iterable<T> | AsyncIterable<T>
-  ): AsyncGenerator<U, void, unknown>
-
-  /**
-   * `map.bind(thisArg, callbackfn)` is the *typed* `bind()` method of the base
-   * function class in js that returns a new function that applies CALLBACKFN to its iterables... it doesn't touch `bind` at runtime at all.
-   */
-  bind<T, U>(
-    this: Map,
-    thisArg: null,
-    callbackfn: (el: T, index: number) => U,
-  ): (iterable: Iterable<T>) => Generator<U, void, unknown>;
+  bind<T, U>(this: Map, thisArg: null, callbackFn: (el: T, index: number) => U): BoundMap<T, U>;
 };
 
 /**
  * `map(callbackfn, iterable)` is `CALLBACKFN(x1), CALLBACKFN(x2), ..., CALLBACKFN(xn)` for each `xi` in `ITERABLE`.
  *
+ * ### Installation
+ * ```bash
+ * pnpm dlx shadcn@latest add bathan1/utop/map.js
+ * ```
+ *
  * ### Usage
+ * ```ts
+ * import { map } from "@/lib/utop/map.js";
+ * ```
  *
  * ```ts
  * const todos = await fetch('https://dummyjson.com/todos')
@@ -36,10 +41,23 @@ type Map = {
  * const todosTexts = map((todoItem) => todoItem.todo, todos);
  * ```
  *
- * ### Bind
- * You can call the {@link map.bind} method which manually types out
- * the generics for you (compile-time change only) so you can do partial
- * applications against `CALLBACKFN`:
+ * `map` also allows iterating over {@link AsyncIterable}s, in which
+ * case it will await `CALLBACKFN` before yielding the transformed value.
+ *
+ * ```ts
+ * const response = await fetch('https://dummyjson.com/todos');
+ * if (!response.body) {
+ *   throw new Error("bad response", { cause: response.status });
+ * }
+ *
+ * const result = await Array.from(map(chunk => chunk.toBase64(), res.body));
+ * console.log(result[0]);
+ * ```
+ *
+ * ### Compile Time `bind`
+ * You can call the {@link map.bind} method which manually overloads the generics
+ * for you so you can do partial applications against `CALLBACKFN`
+ * without tsc screaming at you.
  *
  * ```ts
  * const doubleText = map.bind(null, (x: number) => String(x * 2));
@@ -48,23 +66,82 @@ type Map = {
  * ```
  *
  * ### Examples
+ *
+ * @example
+ * It calls `CALLBACKFN` on demand
+ * ```ts
+ * const callbackfn = vi.fn((x: number) => String(x * 2));
+ * const iterable = randomIterableFromArray(
+ *   Array.from({ length: Math.ceil(Math.random() * 100) }, (_, i) => i)
+ * );
+ * const mapped = map(callbackfn, iterable);
+ *
+ * expect(callbackfn).not.toHaveBeenCalled();
+ * mapped.next();
+ * expect(callbackfn).toHaveBeenCalled();
+ * callbackfn.mockClear();
+ * ```
+ *
+ * @example
+ * It transforms the awaited values of async `ITERABLE`
+ * ```ts
+ * const callbackfn = vi.fn((x: number) => String(x * 2));
+ * async function* count(n: number) {
+ *   for (let i = 0; i < n; i++) {
+ *     yield i + 1;
+ *   }
+ * }
+ * const asyncIterable = count(4);
+ * const doubledText = map(callbackfn, asyncIterable);
+ *
+ * expect(callbackfn).not.toHaveBeenCalled();
+ *
+ * let index = 0;
+ * for await (const value of doubledText) {
+ *   expect(++index).toEqual(parseInt(value) / 2);
+ * }
+ * ```
+ *
+ * @example
+ * It partially applies `CALLBACK_FN` through native `.bind`
+ * ```ts
+ * function double(x: number) {
+ *   return x * 2;
+ * }
+ * const doubleNumbers = map.bind(null, double);
+ *
+ * const syncResult = Array.from(doubleNumbers([1, 2, 3]));
+ * const asyncResult = await Array.fromAsync(
+ *   doubleNumbers(
+ *     (async function* () {
+ *       yield 1;
+ *       yield 2;
+ *       yield 3;
+ *     })()
+ *   )
+ * );
+ *
+ * expect(syncResult).toEqual(asyncResult);
+ * expect(syncResult).toEqual([2, 4, 6]);
+ * ```
  */
-export const map: Map = function* map<T, U>(
-  callbackfn: (el: T, index: number) => U,
-  iterable: Iterable<T>,
-): Generator<U, void, unknown> {
-  let index = 0;
-  for (const el of iterable) {
-    yield callbackfn(el, index++);
-  }
-} as Map;
-
-map.async = async function* mapAsync<T, U>(
+export const map: Map = (<T, U>(
   callbackfn: (el: T, index: number) => Promisable<U>,
-  iterable: AsyncIterable<T> | Iterable<T>
-): AsyncGenerator<U, void, unknown> {
-  let index = 0;
-  for await (const el of iterable) {
-    yield await callbackfn(el, index++);
+  iterable: Iterable<T> | AsyncIterable<T>
+): Generator<U, void, unknown> | AsyncGenerator<U, void, unknown> => {
+  if (Symbol.asyncIterator in iterable) {
+    return (async function* map() {
+      let index = 0;
+      for await (const el of iterable) {
+        yield callbackfn(el, index++);
+      }
+    })();
   }
-}
+
+  return (function* map() {
+    let index = 0;
+    for (const el of iterable) {
+      yield callbackfn(el, index++) as U;
+    }
+  })();
+}) as Map;

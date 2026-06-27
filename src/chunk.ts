@@ -5,7 +5,7 @@
  * ```bash
  * pnpm dlx shadcn@latest add bathan1/utop/chunk.js
  * ```
- * 
+ *
  * ### Usage
  * ```ts
  * import { chunk } from "@/lib/utop/chunk.js";
@@ -21,9 +21,9 @@
  *     .execute();
  * }
  * ```
- * 
- * `chunk` returns an {@link AsyncGenerator} when `ITERABLE` is an async iterable.
- * 
+ *
+ * `chunk` provides async sugar by returning an {@link AsyncGenerator} when `ITERABLE` is an async iterable.
+ *
  * ```ts
  * async function* fetchTodos(ids: number[]) {
  *   for (const id of ids) {
@@ -31,11 +31,11 @@
  *       .then(async res => await res.json() as { todo: string; });
  *   }
  * }
- * 
+ *
  * const todos = fetchTodos([1, 2, 3]);
  * const todosGrouped = chunk(2, todos);
  * ```
- * 
+ *
  * ### Examples
  * @example
  * It yields arrays of max size `LIMIT`
@@ -49,21 +49,21 @@
  * const limit = Math.ceil(Math.random() * 100);
  * const randomLength = Math.ceil(Math.random() * limit);
  * const iterable = randomIterableFromArray(take(randomLength, infinite()).toArray());
- * 
+ *
  * const chunked = Array.from(chunk(limit, iterable));
  * chunked.forEach((array) => expect(array.length).toBeLessThanOrEqual(limit));
  * ```
- * 
+ *
  * @example
  * It throws RangeError when `LIMIT` is non-positive
  * ```ts
  * const limit = Math.random() < 0.5 ? -1 : -1.123;
  * const iterable = randomIterableFromArray([1, 2]);
- * 
+ *
  * const chunked = () => Array.from(chunk(limit, iterable));
  * expect(chunked).toThrow(RangeError);
  * ```
- * 
+ *
  * @example
  * It chunks async iterables
  * ```ts
@@ -72,10 +72,10 @@
  *     yield i + 1;
  *   }
  * }
- * 
+ *
  * const limit = 2;
  * const asyncIterable = count(10);
- * 
+ *
  * const chunked = await Array.fromAsync(chunk(limit, asyncIterable));
  * expect(chunked).toEqual([
  *   [1, 2],
@@ -88,15 +88,15 @@
  */
 export function chunk<T>(
   limit: number,
-  iterable: Iterable<T, unknown, unknown>,
+  iterable: Iterable<T, unknown, unknown>
 ): Generator<T[], void, unknown>;
 export function chunk<T>(
   limit: number,
-  iterable: AsyncIterable<T, unknown, unknown>,
+  iterable: AsyncIterable<T, unknown, unknown>
 ): AsyncGenerator<T[], void, unknown>;
 export function chunk<T>(
   limit: number,
-  iterable: Iterable<T> | AsyncIterable<T>,
+  iterable: Iterable<T> | AsyncIterable<T>
 ): Generator<T[]> | AsyncGenerator<T[]> {
   if (Symbol.asyncIterator in iterable) {
     return (async function* () {
@@ -146,4 +146,3 @@ export function chunk<T>(
     }
   })();
 }
-

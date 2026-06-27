@@ -19,9 +19,9 @@ describe("drop(limit, iterable)", () => {
       yield "b";
       yield "c";
       yield "d";
-    }
+    };
 
     const droppedFirstTwo = await Array.fromAsync(drop(2, asyncIterable()));
     expect(droppedFirstTwo).toEqual(["c", "d"]);
-  })
+  });
 });

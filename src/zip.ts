@@ -76,41 +76,43 @@ type ZipOutput<
 /**
  * `zip(iterables, { mode?; padding? }?)` yields zip-aggregated elements from `ITERABLES`
  * with excess element behavior determined based on `MODE`, if provided, where:
- * 
+ *
  * - `shortest`: stops when any iterable ends and is also the default
  * - `longest`: continues until all iterables end
  * - `strict`: throws if iterables have different lengths
- * 
+ *
  * When `MODE = "longest"`, the elements from `PADDING` are used to fill in the gaps.
- * 
+ *
  * ### Installation
  * ```bash
  * pnpm dlx shadcn@latest add bathan1/utop/zip.js
  * ```
- * 
+ *
  * ### Usage
  * ```ts
  * import { zip } from "@/lib/utop/zip.js";
  * ```
- * 
+ *
  * ```ts
  * const months = ["Nov", "Dec"];
  * const days = [1, 2, 3];
- * 
+ *
  * const zipped = zip([months, days]);
  * for (const [month, day] of zipped) {
  *   console.log(month, day);
  * }
  * ```
- * 
+ *
+ * There is no async sugar for `zip`.
+ *
  * ### Examples
- * 
+ *
  * @example
  * It stops immediately at the shortest iterable
  * ```ts
  * const logSome = vi.fn((..._: any[]) => void 0);
  * const logNever = vi.fn((..._: any[]) => void 0);
- * 
+ *
  * const zipped = zip([
  *   ["foo", "bar", "baz"],
  *   new Set([1, 2]),
@@ -119,12 +121,12 @@ type ZipOutput<
  *     logSome(1);
  *     yield "world";
  *     logSome(2);
- * 
+ *
  *     yield "NEVER";
  *     logNever("nope");
  *   })(),
  * ]);
- * 
+ *
  * expect(zipped.toArray()).toEqual([
  *   ["foo", 1, "hello"],
  *   ["bar", 2, "world"],
@@ -132,7 +134,7 @@ type ZipOutput<
  * expect(logSome).toHaveBeenCalledTimes(2);
  * expect(logNever).not.toHaveBeenCalledOnce();
  * ```
- * 
+ *
  * @example
  * It pads with `undefined` when MODE = "longest"` and `PADDING` is omitted
  * ```ts
@@ -143,7 +145,7 @@ type ZipOutput<
  *   ] as const,
  *   { mode: "longest" }
  * );
- * 
+ *
  * expect(zipped.toArray()).toEqual([
  *   ["Nov", 1],
  *   ["Dec", 2],
@@ -151,7 +153,7 @@ type ZipOutput<
  *   ["Feb", undefined],
  * ]);
  * ```
- * 
+ *
  * @example
  * It maintains `PADDING`'s order when `MODE = "longest"`
  * ```ts
@@ -165,7 +167,7 @@ type ZipOutput<
  *     padding: ["ok", "ok", "ok"],
  *   }
  * );
- * 
+ *
  * expect(zipped.toArray()).toEqual([
  *   ["Alice", 100],
  *   ["Bob", 101],
@@ -174,7 +176,7 @@ type ZipOutput<
  *   ["me", "ok"],
  * ]);
  * ```
- * 
+ *
  * @example
  * It pads with `undefined` when `PADDING` is fully consumed prior to finish when `MODE = "longest"`
  * ```ts
@@ -188,7 +190,7 @@ type ZipOutput<
  *     padding: ["ok", "ok"],
  *   }
  * );
- * 
+ *
  * expect(zipped.toArray()).toEqual([
  *   ["Alice", 100],
  *   ["Bob", 101],
@@ -197,7 +199,7 @@ type ZipOutput<
  *   ["me", undefined],
  * ]);
  * ```
- * 
+ *
  * @example
  * It throws `TypeError` on unequal lengths when `MODE = "strict"`
  * ```ts
@@ -208,7 +210,7 @@ type ZipOutput<
  *   ],
  *   { mode: "strict" }
  * );
- * 
+ *
  * expect(thisIsGoingTo).toThrow(TypeError);
  * ```
  */

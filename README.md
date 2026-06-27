@@ -201,9 +201,8 @@ export function find<T>(
 ```
 
 You don't really need to remember that pattern from here because each
-function will have docs explaining its async call pattern, if they
-even come with one (some intentially omit it). All of the "standard"
-iterator helper methods come with an async signature.
+function will have docs explaining the call pattern for its async sugar, if they
+have one. All of the "standard" iterator helper methods come with async sugar.
 
 ## Installation
 The primary release channel is the GitHub repository as a `shadcn` [registry](https://ui.shadcn.com/docs/registry/github),

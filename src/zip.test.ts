@@ -98,5 +98,4 @@ describe("zip(iterables, options?)", () => {
 
     expect(thisIsGoingTo).toThrow(TypeError);
   });
-})
-
+});
