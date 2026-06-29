@@ -270,6 +270,11 @@
           "path": "./src/partitionMap.ts",
           "type": "registry:lib",
           "target": "@lib/utop/partitionMap.ts"
+        },
+        {
+          "path": "./src/types.ts",
+          "type": "registry:lib",
+          "target": "@lib/utop/types.ts"
         }
       ]
     },

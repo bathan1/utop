@@ -31,6 +31,6 @@ export function* filterMap<T, U>(
   let index = 0;
   for (const value of iterable) {
     const result = callbackfn(value, index++);
-    if (result !== None && result !== null) yield result;
+    if (result != null) yield result;
   }
 }

@@ -1,4 +1,5 @@
-export type Either<L, R> = { kind: "left"; value: L } | { kind: "right"; value: R };
+import type { Promisable, Either } from "./types";
+
 
 /**
  * `partitionMap(callbackfn, iterable)` separates `CALLBACKFN` results for `ITERABLE` into left and right values.
@@ -10,10 +11,23 @@ export type Either<L, R> = { kind: "left"; value: L } | { kind: "right"; value: 
  *   : { kind: "right", value }, [1, -1, 2]);
  * ```
  *
- * `partitionMap` has no async sugar; materialize async input before calling it.
+ * `partitionMap` provides async sugar over async `ITERABLE`, in which case,
+ * `CALLBACKFN` will also be awaited.
  *
  * ```ts
- * const [errors, values] = partitionMap(classify, await Array.fromAsync(values()));
+ * async function* count() {
+ *   for (let i = 0; i < 3; i++) {
+ *     yield i + 1;
+ *   }
+ * }
+ * const [odds, evens] = await partitionMap(
+ * async (value): Promise<Either<number, number>> =>
+ *   value % 2 === 1
+ *   ? { kind: "left", value }
+ *   : { kind: "right", value },
+ *   count()
+ * );
+ * console.log({ odds, evens });
  * ```
  *
  * ### Examples
@@ -32,14 +46,36 @@ export type Either<L, R> = { kind: "left"; value: L } | { kind: "right"; value: 
  * ```
  */
 export function partitionMap<T, L, R>(
+  callbackfn: (value: T, index: number) => Promisable<Either<L, R>>,
+  iterable: AsyncIterable<T>
+): Promise<[lefts: L[], rights: R[]]>;
+export function partitionMap<T, L, R>(
   callbackfn: (value: T, index: number) => Either<L, R>,
   iterable: Iterable<T>
-): [lefts: L[], rights: R[]] {
+): [lefts: L[], rights: R[]];
+
+export function partitionMap<T, L, R>(
+  callbackfn: (value: T, index: number) => Promisable<Either<L, R>>,
+  iterable: Iterable<T> | AsyncIterable<T>
+): Promisable<[lefts: L[], rights: R[]]> {
+  if (Symbol.asyncIterator in iterable) {
+    return (async () => {
+      let index = 0;
+      const lefts: L[] = [];
+      const rights: R[] = [];
+      for await (const value of iterable) {
+        const result = await callbackfn(value, index++);
+        if (result.kind === "left") lefts.push(result.value);
+        else rights.push(result.value);
+      }
+      return [lefts, rights];
+    })();
+  }
   let index = 0;
   const lefts: L[] = [];
   const rights: R[] = [];
   for (const value of iterable) {
-    const result = callbackfn(value, index++);
+    const result = callbackfn(value, index++) as Either<L, R>;
     if (result.kind === "left") lefts.push(result.value);
     else rights.push(result.value);
   }

@@ -35,7 +35,7 @@ export function findMap<T, U>(
   let index = 0;
   for (const value of iterable) {
     const result = callbackfn(value, index++);
-    if (result) return result;
+    if (result != null) return result;
   }
   return None;
 }
