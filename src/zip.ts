@@ -83,16 +83,7 @@ type ZipOutput<
  *
  * When `MODE = "longest"`, the elements from `PADDING` are used to fill in the gaps.
  *
- * ### Installation
- * ```bash
- * pnpm dlx shadcn@latest add bathan1/utop/zip.js
- * ```
- *
  * ### Usage
- * ```ts
- * import { zip } from "@/lib/utop/zip.js";
- * ```
- *
  * ```ts
  * const months = ["Nov", "Dec"];
  * const days = [1, 2, 3];

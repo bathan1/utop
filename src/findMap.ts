@@ -3,16 +3,7 @@ import { None, type Option } from "./types.js";
 /**
  * `findMap(callbackfn, iterable)` returns the first defined `CALLBACKFN` result from `ITERABLE`.
  *
- * ### Installation
- * ```bash
- * pnpm dlx shadcn@latest add bathan1/utop/findMap.js
- * ```
- *
  * ### Usage
- * ```ts
- * import { findMap } from "@/lib/utop/findMap.js";
- * ```
- *
  * ```ts
  * const parsed = findMap((text) => text ? Number(text) : undefined, ["", "2"]);
  * ```

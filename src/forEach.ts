@@ -3,16 +3,7 @@ import type { Promisable } from "./types.js";
 /**
  * `forEach(callbackfn, iterable)` calls `CALLBACKFN` on each element in `ITERABLE` *immediately* and returns nothing
  *
- * ### Installation
- * ```bash
- * pnpm dlx shadcn@latest add bathan1/utop/forEach.js
- * ```
- *
  * ### Usage
- * ```ts
- * import { forEach } from "@/lib/utop/forEach.js";
- * ```
- *
  * ```ts
  * const todos = await fetch('https://dummyjson.com/todos')
  *   .then(async res => (await res.json()).todos);

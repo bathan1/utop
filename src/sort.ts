@@ -1,16 +1,7 @@
 /**
  * `sort(compareFn, iterable)` returns `ITERABLE` as a new array sorted by `COMPAREFN`.
  *
- * ### Installation
- * ```bash
- * pnpm dlx shadcn@latest add bathan1/utop/sort.js
- * ```
- *
  * ### Usage
- * ```ts
- * import { sort } from "@/lib/utop/sort.js";
- * ```
- *
  * ```ts
  * const ascending = sort((a, b) => a - b, [3, 1, 2]);
  * ```

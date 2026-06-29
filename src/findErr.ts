@@ -2,16 +2,7 @@
  * `findErr(predicate, iterable)` returns the first value in `ITERABLE` matching `PREDICATE` or throws
  * {@link RangeError} if no such value is found.
  *
- * ### Installation
- * ```bash
- * pnpm dlx shadcn@latest add bathan1/utop/findErr.js
- * ```
- *
  * ### Usage
- * ```ts
- * import { findErr } from "@/lib/utop/findErr.js";
- * ```
- *
  * ```ts
  * const firstOpen = findErr((todo) => !todo.done, todos);
  * ```

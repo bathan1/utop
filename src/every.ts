@@ -2,18 +2,7 @@
  * `every(predicate, iterable)` is `true` if every `value` in `ITERABLE` satisfies
  * `PREDICATE(value)` or `false` otherwise.
  *
- * ## Installation
- *
- * ```bash
- * pnpm dlx shadcn@latest add bathan1/utop/every.js
- * ```
- *
  * ## Usage
- *
- * ```ts
- * import { every } from "@/lib/utop/every.js";
- * ```
- *
  * ```ts
  * const todos = await fetch('https://dummyjson.com/todos')
  *   .then(async res => (await res.json()).todos as { completed: boolean }[]);

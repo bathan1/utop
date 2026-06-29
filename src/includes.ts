@@ -1,16 +1,7 @@
 /**
  * `includes(searchElement, iterable, fromIndex?)` reports whether `SEARCH_ELEMENT` occurs in `ITERABLE` at or after `FROM_INDEX`.
  *
- * ### Installation
- * ```bash
- * pnpm dlx shadcn@latest add bathan1/utop/includes.js
- * ```
- *
  * ### Usage
- * ```ts
- * import { includes } from "@/lib/utop/includes.js";
- * ```
- *
  * ```ts
  * const hasAdmin = includes("admin", roles);
  * ```

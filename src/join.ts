@@ -3,16 +3,7 @@ import { map } from "./map.js";
 /**
  * `join(separator, iterable, toString?)` joins `ITERABLE` with `SEPARATOR`, applying `TO_STRING` when provided.
  *
- * ### Installation
- * ```bash
- * pnpm dlx shadcn@latest add bathan1/utop/join.js
- * ```
- *
  * ### Usage
- * ```ts
- * import { join } from "@/lib/utop/join.js";
- * ```
- *
  * ```ts
  * const csv = join(",", [1, 2, 3]);
  * ```

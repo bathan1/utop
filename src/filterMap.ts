@@ -3,16 +3,7 @@ import { None, type Option } from "./types.js";
 /**
  * `filterMap(callbackfn, iterable)` lazily yields each defined `CALLBACKFN` result for `ITERABLE`.
  *
- * ### Installation
- * ```bash
- * pnpm dlx shadcn@latest add bathan1/utop/filterMap.js
- * ```
- *
  * ### Usage
- * ```ts
- * import { filterMap } from "@/lib/utop/filterMap.js";
- * ```
- *
  * ```ts
  * const numbers = [...filterMap((text) => text ? Number(text) : undefined, ["1", "", "3"])];
  * ```

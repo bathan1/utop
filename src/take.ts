@@ -2,16 +2,7 @@
  * `take(limit, iterable)` is the new sequence that takes `LIMIT` elements from `ITERABLE` when `LIMIT` is non-negative
  * or throws {@link RangeError} otherwise when `LIMIT` is negative or `NaN`.
  *
- * ### Installation
- * ```bash
- * pnpm dlx shadcn@latest add bathan1/utop/take.js
- * ```
- *
  * ### Usage
- * ```ts
- * import { take } from "@/lib/utop/take.js";
- * ```
- *
  * ```ts
  * const todos = await fetch('https://dummyjson.com/todos')
  *   .then(async res => (await res.json()).todos));

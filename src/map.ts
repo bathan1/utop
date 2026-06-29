@@ -25,16 +25,7 @@ type Map = {
 /**
  * `map(callbackfn, iterable)` is `CALLBACKFN(x1), CALLBACKFN(x2), ..., CALLBACKFN(xn)` for each `xi` in `ITERABLE`.
  *
- * ### Installation
- * ```bash
- * pnpm dlx shadcn@latest add bathan1/utop/map.js
- * ```
- *
  * ### Usage
- * ```ts
- * import { map } from "@/lib/utop/map.js";
- * ```
- *
  * ```ts
  * const todos = await fetch('https://dummyjson.com/todos')
  *   .then(async res => (await res.json()).todos as { todo: string; }[]);

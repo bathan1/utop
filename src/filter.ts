@@ -3,16 +3,7 @@ import type { Promisable } from "./types.js";
 /**
  * `filter(predicate, iterable)` lazily yields the values in `ITERABLE` that satisfy `PREDICATE`.
  *
- * ### Installation
- * ```bash
- * pnpm dlx shadcn@latest add bathan1/utop/filter.js
- * ```
- *
  * ### Usage
- * ```ts
- * import { filter } from "@/lib/utop/filter.js";
- * ```
- *
  * ```ts
  * const even = [...filter((value) => value % 2 === 0, [1, 2, 3, 4])];
  * ```

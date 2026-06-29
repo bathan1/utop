@@ -3,16 +3,7 @@ import type { Promisable } from "./types.js";
 /**
  * `some(predicate, iterable)` reports whether any value in `ITERABLE` satisfies `PREDICATE`.
  *
- * ### Installation
- * ```bash
- * pnpm dlx shadcn@latest add bathan1/utop/some.js
- * ```
- *
  * ### Usage
- * ```ts
- * import { some } from "@/lib/utop/some.js";
- * ```
- *
  * ```ts
  * const hasOverdue = some((invoice) => invoice.overdue, invoices);
  * ```

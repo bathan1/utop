@@ -3,16 +3,7 @@ import type { Promisable } from "./types.js";
 /**
  * `reduce(callbackfn, initialValue, iterable)` folds `ITERABLE` into shape of `INITIAL_VALUE` by threading each element in `ITERABLE` through the reducer `CALLBACKFN`.
  *
- * ### Installation
- * ```bash
- * pnpm dlx shadcn@latest add bathan1/utop/reduce.js
- * ```
- *
  * ### Usage
- * ```ts
- * import { reduce } from "@/lib/utop/find.js";
- * ```
- *
  * ```ts
  * const todos = await fetch('https://dummyjson.com/todos')
  *   .then(async res => (await res.json()).todos as { todo: string }[]);

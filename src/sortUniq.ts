@@ -1,16 +1,7 @@
 /**
  * `sortUniq(compareFn, iterable)` sorts `ITERABLE` with `COMPAREFN` and removes comparator-equal neighbors.
  *
- * ### Installation
- * ```bash
- * pnpm dlx shadcn@latest add bathan1/utop/sortUniq.js
- * ```
- *
  * ### Usage
- * ```ts
- * import { sortUniq } from "@/lib/utop/sortUniq.js";
- * ```
- *
  * ```ts
  * const unique = sortUniq((a, b) => a - b, [3, 1, 3, 2]);
  * ```

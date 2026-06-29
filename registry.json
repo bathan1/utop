@@ -26,6 +26,157 @@
       ]
     },
     {
+      "name": "chunk.js",
+      "type": "registry:lib",
+      "files": [
+        {
+          "path": "./src/chunk.ts",
+          "type": "registry:lib",
+          "target": "@lib/utop/chunk.ts"
+        }
+      ]
+    },
+    {
+      "name": "drop.js",
+      "type": "registry:lib",
+      "files": [
+        {
+          "path": "./src/drop.ts",
+          "type": "registry:lib",
+          "target": "@lib/utop/drop.ts"
+        }
+      ]
+    },
+    {
+      "name": "every.js",
+      "type": "registry:lib",
+      "files": [
+        {
+          "path": "./src/every.ts",
+          "type": "registry:lib",
+          "target": "@lib/utop/every.ts"
+        }
+      ],
+      "registryDependencies": ["types.js"]
+    },
+    {
+      "name": "filter.js",
+      "type": "registry:lib",
+      "files": [
+        {
+          "path": "./src/filter.ts",
+          "type": "registry:lib",
+          "target": "@lib/utop/filter.ts"
+        }
+      ],
+      "registryDependencies": ["types.js"]
+    },
+    {
+      "name": "filterMap.js",
+      "type": "registry:lib",
+      "files": [
+        {
+          "path": "./src/filterMap.ts",
+          "type": "registry:lib",
+          "target": "@lib/utop/filterMap.ts"
+        }
+      ],
+      "registryDependencies": ["types.js"]
+    },
+    {
+      "name": "find.js",
+      "type": "registry:lib",
+      "files": [
+        {
+          "path": "./src/find.ts",
+          "type": "registry:lib",
+          "target": "@lib/utop/find.ts"
+        }
+      ],
+      "registryDependencies": ["types.js"]
+    },
+    {
+      "name": "findErr.js",
+      "type": "registry:lib",
+      "files": [
+        {
+          "path": "./src/findErr.ts",
+          "type": "registry:lib",
+          "target": "@lib/utop/findErr.ts"
+        }
+      ]
+    },
+    {
+      "name": "findMap.js",
+      "type": "registry:lib",
+      "files": [
+        {
+          "path": "./src/findMap.ts",
+          "type": "registry:lib",
+          "target": "@lib/utop/findMap.ts"
+        }
+      ],
+      "registryDependencies": ["types.js"]
+    },
+    {
+      "name": "flat.js",
+      "type": "registry:lib",
+      "files": [
+        {
+          "path": "./src/flat.ts",
+          "type": "registry:lib",
+          "target": "@lib/utop/flat.ts"
+        }
+      ]
+    },
+    {
+      "name": "flatMap.js",
+      "type": "registry:lib",
+      "files": [
+        {
+          "path": "./src/flatMap.ts",
+          "type": "registry:lib",
+          "target": "@lib/utop/flatMap.ts"
+        }
+      ],
+      "registryDependencies": ["types.js"]
+    },
+    {
+      "name": "forEach.js",
+      "type": "registry:lib",
+      "files": [
+        {
+          "path": "./src/forEach.ts",
+          "type": "registry:lib",
+          "target": "@lib/utop/forEach.ts"
+        }
+      ],
+      "registryDependencies": ["types.js"]
+    },
+    {
+      "name": "includes.js",
+      "type": "registry:lib",
+      "files": [
+        {
+          "path": "./src/includes.ts",
+          "type": "registry:lib",
+          "target": "@lib/utop/includes.ts"
+        }
+      ]
+    },
+    {
+      "name": "join.js",
+      "type": "registry:lib",
+      "files": [
+        {
+          "path": "./src/join.ts",
+          "type": "registry:lib",
+          "target": "@lib/utop/join.ts"
+        }
+      ],
+      "registryDependencies": ["map.js"]
+    },
+    {
       "name": "map.js",
       "type": "registry:lib",
       "files": [
@@ -34,7 +185,8 @@
           "type": "registry:lib",
           "target": "@lib/utop/map.ts"
         }
-      ]
+      ],
+      "registryDependencies": ["types.js"]
     },
     {
       "name": "not.js",
@@ -44,6 +196,107 @@
           "path": "./src/not.ts",
           "type": "registry:lib",
           "target": "@lib/utop/not.ts"
+        }
+      ]
+    },
+    {
+      "name": "orderBy.js",
+      "type": "registry:lib",
+      "files": [
+        {
+          "path": "./src/orderBy.ts",
+          "type": "registry:lib",
+          "target": "@lib/utop/orderBy.ts"
+        }
+      ]
+    },
+    {
+      "name": "partition.js",
+      "type": "registry:lib",
+      "files": [
+        {
+          "path": "./src/partition.ts",
+          "type": "registry:lib",
+          "target": "@lib/utop/partition.ts"
+        }
+      ]
+    },
+    {
+      "name": "partitionMap.js",
+      "type": "registry:lib",
+      "files": [
+        {
+          "path": "./src/partitionMap.ts",
+          "type": "registry:lib",
+          "target": "@lib/utop/partitionMap.ts"
+        }
+      ]
+    },
+    {
+      "name": "perform.js",
+      "type": "registry:lib",
+      "files": [
+        {
+          "path": "./src/perform.ts",
+          "type": "registry:lib",
+          "target": "@lib/utop/perform.ts"
+        }
+      ]
+    },
+    {
+      "name": "reduce.js",
+      "type": "registry:lib",
+      "files": [
+        {
+          "path": "./src/reduce.ts",
+          "type": "registry:lib",
+          "target": "@lib/utop/reduce.ts"
+        }
+      ],
+      "registryDependencies": ["types.js"]
+    },
+    {
+      "name": "some.js",
+      "type": "registry:lib",
+      "files": [
+        {
+          "path": "./src/some.ts",
+          "type": "registry:lib",
+          "target": "@lib/utop/some.ts"
+        }
+      ],
+      "registryDependencies": ["types.js"]
+    },
+    {
+      "name": "sort.js",
+      "type": "registry:lib",
+      "files": [
+        {
+          "path": "./src/sort.ts",
+          "type": "registry:lib",
+          "target": "@lib/utop/sort.ts"
+        }
+      ]
+    },
+    {
+      "name": "sortUniq.js",
+      "type": "registry:lib",
+      "files": [
+        {
+          "path": "./src/sortUniq.ts",
+          "type": "registry:lib",
+          "target": "@lib/utop/sortUniq.ts"
+        }
+      ]
+    },
+    {
+      "name": "take.js",
+      "type": "registry:lib",
+      "files": [
+        {
+          "path": "./src/take.ts",
+          "type": "registry:lib",
+          "target": "@lib/utop/take.ts"
         }
       ]
     },

@@ -3,16 +3,7 @@ export type Either<L, R> = { kind: "left"; value: L } | { kind: "right"; value: 
 /**
  * `partitionMap(callbackfn, iterable)` separates `CALLBACKFN` results for `ITERABLE` into left and right values.
  *
- * ### Installation
- * ```bash
- * pnpm dlx shadcn@latest add bathan1/utop/partitionMap.js
- * ```
- *
  * ### Usage
- * ```ts
- * import { partitionMap } from "@/lib/utop/partitionMap.js";
- * ```
- *
  * ```ts
  * const [errors, values] = partitionMap((value) => value < 0
  *   ? { kind: "left", value: "negative" }

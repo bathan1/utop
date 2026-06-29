@@ -3,16 +3,7 @@ import type { Promisable } from "./types.js";
 /**
  * `flatMap(callbackfn, iterable)` lazily yields every value from each iterable returned by `CALLBACKFN` for `ITERABLE`.
  *
- * ### Installation
- * ```bash
- * pnpm dlx shadcn@latest add bathan1/utop/flatMap.js
- * ```
- *
  * ### Usage
- * ```ts
- * import { flatMap } from "@/lib/utop/flatMap.js";
- * ```
- *
  * ```ts
  * const words = [...flatMap((line) => line.split(" "), lines)];
  * ```

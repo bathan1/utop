@@ -15,16 +15,7 @@ type Predicate<T, S extends T = T> = ((value: T) => boolean) | ((value: T) => va
  * the function evaluates them, as opposed to the usual case where omitting arguments
  * simply indicates the absence of that value in Utop.js.
  *
- * ### Installation
- * ```bash
- * pnpm dlx shadcn@latest add bathan1/utop/not.js
- * ```
- *
  * ### Usage
- * ```ts
- * import { not } from "@/lib/utop/not.js";
- * ```
- *
  * ```ts
  * const response = await fetch("http://localhost:3000");
  * if (not(response.ok)) {

@@ -4,16 +4,7 @@ import { type Option, None } from "./types.js";
  * `find(predicate, iterable)` returns the first `value` in `ITERABLE` that
  * satisfies `PREDICATE(x)` or returns `undefined` otherwise.
  *
- * ### Installation
- * ```ts
- * pnpm dlx shadcn@latest add bathan1/utop/find.js
- * ```
- *
  * ### Usage
- * ```ts
- * import { find } from "@/lib/utop/find.js";
- * ```
- *
  * ```ts
  * const todos = await fetch('https://dummyjson.com/todos')
  *   .then(async res => (await res.json()).todos as { completed: boolean }[]);

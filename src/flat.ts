@@ -1,16 +1,7 @@
 /**
  * `flat(iterable)` lazily flattens one level of nested `ITERABLE`.
  *
- * ### Installation
- * ```bash
- * pnpm dlx shadcn@latest add bathan1/utop/flat.js
- * ```
- *
  * ### Usage
- * ```ts
- * import { flat } from "@/lib/utop/flat.js";
- * ```
- *
  * ```ts
  * const values = [...flat([[1, 2], new Set([3, 4])])];
  * ```

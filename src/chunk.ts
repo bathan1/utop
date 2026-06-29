@@ -1,16 +1,7 @@
 /**
  * `chunk(limit, iterable)` is a new generator that yields elements of `ITERABLE` materialized as arrays of max size `LIMIT`.
  *
- * ### Installation
- * ```bash
- * pnpm dlx shadcn@latest add bathan1/utop/chunk.js
- * ```
- *
  * ### Usage
- * ```ts
- * import { chunk } from "@/lib/utop/chunk.js";
- * ```
- *
  * ```ts
  * const lotsOfRows = createLotsOfData();
  * const insertableChunks = chunk(500, lotsOfRows);

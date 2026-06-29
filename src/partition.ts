@@ -1,16 +1,7 @@
 /**
  * `partition(predicate, iterable)` splits `ITERABLE` by `PREDICATE` into matching and non-matching values.
  *
- * ### Installation
- * ```bash
- * pnpm dlx shadcn@latest add bathan1/utop/partition.js
- * ```
- *
  * ### Usage
- * ```ts
- * import { partition } from "@/lib/utop/partition.js";
- * ```
- *
  * ```ts
  * const [even, odd] = partition((value) => value % 2 === 0, [1, 2, 3, 4]);
  * ```

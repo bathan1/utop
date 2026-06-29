@@ -14,16 +14,7 @@ const compare = {
 /**
  * `orderBy(keys, direction, iterable)` returns `ITERABLE` ordered by `KEYS` in `DIRECTION`.
  *
- * ### Installation
- * ```bash
- * pnpm dlx shadcn@latest add bathan1/utop/orderBy.js
- * ```
- *
  * ### Usage
- * ```ts
- * import { orderBy } from "@/lib/utop/orderBy.js";
- * ```
- *
  * ```ts
  * const ranked = orderBy(["score"], "desc", players);
  * ```

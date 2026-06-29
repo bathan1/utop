@@ -1,16 +1,7 @@
 /**
  * `perform(iterator)` consumes `ITERATOR` and returns its final return value.
  *
- * ### Installation
- * ```bash
- * pnpm dlx shadcn@latest add bathan1/utop/perform.js
- * ```
- *
  * ### Usage
- * ```ts
- * import { perform } from "@/lib/utop/perform.js";
- * ```
- *
  * ```ts
  * function* work() { yield "working"; return "done"; }
  * const result = perform(work());
