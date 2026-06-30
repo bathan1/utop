@@ -3,7 +3,7 @@ import type { Promisable } from "./types.js";
 /**
  * `some(predicate, iterable)` reports whether any value in `ITERABLE` satisfies `PREDICATE`.
  *
- * ### Usage
+ * ## Usage
  * ```ts
  * const hasOverdue = some((invoice) => invoice.overdue, invoices);
  * ```
@@ -14,7 +14,7 @@ import type { Promisable } from "./types.js";
  * const hasOverdue = await some(async (invoice) => isOverdue(invoice), invoices());
  * ```
  *
- * ### Examples
+ * ## Examples
  *
  * @example
  * It short-circuits when a value satisfies `PREDICATE`

@@ -83,7 +83,7 @@ type ZipOutput<
  *
  * When `MODE = "longest"`, the elements from `PADDING` are used to fill in the gaps.
  *
- * ### Usage
+ * ## Usage
  * ```ts
  * const months = ["Nov", "Dec"];
  * const days = [1, 2, 3];
@@ -96,7 +96,7 @@ type ZipOutput<
  *
  * There is no async sugar for `zip`.
  *
- * ### Examples
+ * ## Examples
  *
  * @example
  * It stops immediately at the shortest iterable

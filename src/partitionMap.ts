@@ -3,7 +3,7 @@ import type { Promisable, Either } from "./types";
 /**
  * `partitionMap(callbackfn, iterable)` separates `CALLBACKFN` results for `ITERABLE` into left and right values.
  *
- * ### Usage
+ * ## Usage
  * ```ts
  * const [errors, values] = partitionMap((value) => value < 0
  *   ? { kind: "left", value: "negative" }
@@ -29,7 +29,7 @@ import type { Promisable, Either } from "./types";
  * console.log({ odds, evens });
  * ```
  *
- * ### Examples
+ * ## Examples
  *
  * @example
  * It separates left and right result values

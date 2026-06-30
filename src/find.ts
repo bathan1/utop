@@ -4,7 +4,7 @@ import { type Option, None } from "./types.js";
  * `find(predicate, iterable)` returns the first `value` in `ITERABLE` that
  * satisfies `PREDICATE(x)` or returns `undefined` otherwise.
  *
- * ### Usage
+ * ## Usage
  * ```ts
  * const todos = await fetch('https://dummyjson.com/todos')
  *   .then(async res => (await res.json()).todos as { completed: boolean }[]);
@@ -31,7 +31,7 @@ import { type Option, None } from "./types.js";
  *
  * `find` does not await `PREDICATE`; async behavior is only provided for async iterables.
  *
- * ### Examples
+ * ## Examples
  *
  * @example
  * It returns the first matching value

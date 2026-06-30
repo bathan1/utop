@@ -6,14 +6,14 @@ type Seq<T> =
  * `findErr(predicate, iterable)` returns the first value in `ITERABLE` matching `PREDICATE` or throws
  * {@link RangeError} if no such value is found.
  *
- * ### Usage
+ * ## Usage
  * ```ts
  * const firstOpen = findErr((todo) => !todo.done, todos);
  * ```
  *
  * `findErr` does not await `PREDICATE`; async behavior is only provided for async iterables.
  *
- * ### Examples
+ * ## Examples
  *
  * @example
  * It returns the first value that satisfies `CALLBACKFN`

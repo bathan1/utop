@@ -5,7 +5,7 @@ type Seq<T> =
 /**
  * `drop(limit, iterable)` is `ITERABLE` with `LIMIT` elements dropped from the start.
  *
- * ### Usage
+ * ## Usage
  * ```ts
  * const droppedFirstTwo = [...drop(2, [1, 2, 3, 4, 5])];
  * console.log(droppedFirstTwo); // logs [3, 4, 5]
@@ -26,7 +26,7 @@ type Seq<T> =
  * console.log(droppedFirstTwoAsync); // logs [3, 4, 5]
  * ```
  *
- * ### Examples
+ * ## Examples
  *
  * @example
  * It drops the first `LIMIT` values from `ITERABLE`

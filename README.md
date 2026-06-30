@@ -5,7 +5,7 @@ It is basically the [iterator helper methods](https://developer.mozilla.org/en-U
 but exposed as standalone ESM exports so you can it from the "top-level":
 
 ```ts
-import { forEach } from "@/lib/utop/forEach.js";
+import { forEach } from "@/lib/utop/forEach";
 
 forEach(console.log, ["Hello", "Utop", ".js", "!"])
 ```
@@ -15,7 +15,7 @@ a [`Map`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Glob
 object that implements the Iterable Protocol.
 
 ```ts
-import { forEach } from "@/lib/utop/forEach.js";
+import { forEach } from "@/lib/utop/forEach";
 
 forEach(console.log, new Set(["Hello", "Utop", ".js", "!"]));
 forEach(console.log, new Map([
@@ -42,7 +42,7 @@ where `methodArgs` are the arguments for the operation `f`, and then the `iterab
 So for example, the `forEach` method has a type signature that looks something like:
 
 ```ts
-type IteratorObject<T, TReturn, TNext> {
+interface IteratorObject<T, TReturn, TNext> {
   forEach: (callbackfn: (value: T, index: number) => unknown): void
 }
 ```
@@ -103,18 +103,18 @@ have to touch the implementation to satisfy its signature.
 In [`findErr.js`](./src/findErr.ts), for example, we can see that it includes the following overloads:
 
 ```ts
-// src/find.ts
-export function find<T, S extends T>(
+// src/findErr.ts
+export function findErr<T, S extends T>(
   predicate: (value: T, index: number) => value is S,
   iterable: Iterable<T>
 ): S;
-export function find<T>(
+export function findErr<T>(
   predicate: (value: T, index: number) => unknown,
   iterable: Iterable<T>
 ): Option<T>;
 ```
 
-So when we use an explicit type-guard in `find`, typescript is able
+So when we use an explicit type-guard in `findErr`, typescript is able
 to infer that the returned value is the asserted type `S`:
 
 ```ts
@@ -125,7 +125,7 @@ const numsOrStrings: string | number[] = Array.from({ length: 5}, (, i) => {
   return i;
 });
 
-const string = find(val => typeof val === "string", numsOrStrings);
+const string = findErr(val => typeof val === "string", numsOrStrings);
 ```
 
 This overload doesn't cost us anything at runtime because the
@@ -133,13 +133,10 @@ implementation would remain the same if we removed it, as the `if(predicate)`
 branch hits for both explicit boolean typeguards and truthy returning values.
 
 ```ts
-export function find<T>(
+export function findErr<T>(
   predicate: (value: T, index: number) => unknown,
   iterable: Iterable<T> | AsyncIterable<T>,
 ): Promisable<T> {
-  if (Symbol.asyncIterator in iterable) {
-    // async case omitted
-  }
   let index = 0;
 
   for (const value of iterable) {
@@ -153,14 +150,14 @@ export function find<T>(
 ```
 
 ### Runtime overloads
-`find` also exports the following overloads:
+`findErr` also exports the following overloads:
 
 ```ts
-export function find<T, S extends T>(
+export function findErr<T, S extends T>(
   predicate: (value: T, index: number) => value is S,
   iterable: AsyncIterable<T>
 ): Promise<S>;
-export function find<T>(
+export function findErr<T>(
   predicate: (value: T, index: number) => unknown,
   iterable: AsyncIterable<T>
 ): Promise<T>;
@@ -172,10 +169,10 @@ to return a promise, which `find` does not by default, meaning we
 have to make a runtime change, which comes with some slight overhead.
 What that runtime change is exactly varies depending on how each 
 function defines its async call semantics, but it usually comes down to
-an `if` check or two:
+an `if` check:
 
 ```ts
-export function find<T>(
+export function findErr<T>(
   predicate: (value: T, index: number) => unknown,
   iterable: Iterable<T> | AsyncIterable<T>,
 ): Promisable<T> {
@@ -207,10 +204,10 @@ which assumes the following:
 1. You are using TypeScript
 2. You have a bundler capable of compiling `ESNext` source code
 
-Each function is an individual registry item with the naming convention of `${FUNCTION_NAME}.js`. To add `map` for example:
+Each function is an individual registry item named according to its corresponding export. To add `map` for example:
 
 ```bash
-pnpm dlx shadcn@latest add bathan1/utop/map.js
+pnpm dlx shadcn@latest add bathan1/utop.js/map
 ```
 
 `shadcn` will take care of writing the `utop` directory to your `@lib` folder
@@ -218,7 +215,7 @@ for your project (.e.g. `@/lib/utop`) along with any dependencies, which is
 where all the library functions can be imported from:
 
 ```ts
-import { map } from "@/lib/utop/map.js";
+import { map } from "@/lib/utop/map";
 ```
 
 As of the time of writing, there is a [known issue](https://github.com/vercel/next.js/issues/82945) in Next.js with importing native relative path modules. The workaround is to use a turbopack loader rule that looks something like this:
@@ -261,7 +258,7 @@ You can simply copy and paste the js script from above or use the
 registry item that places it in your project's root:
 
 ```bash
-pnpm dlx shadcn@latest add bathan1/utop/import-rewrite-loader.cjs
+pnpm dlx shadcn@latest add bathan1/utop.js/import-rewrite-loader.cjs
 ```
 
 And that's it!

@@ -1,4 +1,3 @@
-import path from "node:path";
 import { Node, Project } from "ts-morph";
 
 const moduleFilePath = process.argv[2];
@@ -12,7 +11,7 @@ const project = new Project({
 
 const moduleFile = project.addSourceFileAtPath(moduleFilePath);
 
-for (const statement of moduleFile.getStatements()) {
+for (const _ of moduleFile.getStatements()) {
   const jsDocs = moduleFile
     .getStatements()
     .flatMap(getJsDocs)

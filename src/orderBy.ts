@@ -14,7 +14,7 @@ const compare = {
 /**
  * `orderBy(keys, direction, iterable)` returns `ITERABLE` ordered by `KEYS` in `DIRECTION`.
  *
- * ### Usage
+ * ## Usage
  * ```ts
  * const ranked = orderBy(["score"], "desc", players);
  * ```
@@ -25,7 +25,7 @@ const compare = {
  * const ranked = orderBy(["score"], "desc", await Array.fromAsync(players()));
  * ```
  *
- * ### Examples
+ * ## Examples
  *
  * @example
  * It sorts by later keys when earlier keys are equal

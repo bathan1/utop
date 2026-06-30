@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry.json",
   "name": "utop.js",
-  "homepage": "https://github.com/bathan1/utop",
+  "homepage": "https://github.com/bathan1/utop.js",
   "items": [
     {
       "name": "import-rewriter-loader.cjs",
@@ -15,7 +15,7 @@
       ]
     },
     {
-      "name": "types.js",
+      "name": "types",
       "type": "registry:lib",
       "files": [
         {
@@ -26,7 +26,7 @@
       ]
     },
     {
-      "name": "chunk.js",
+      "name": "chunk",
       "type": "registry:lib",
       "files": [
         {
@@ -37,7 +37,7 @@
       ]
     },
     {
-      "name": "drop.js",
+      "name": "drop",
       "type": "registry:lib",
       "files": [
         {
@@ -48,7 +48,7 @@
       ]
     },
     {
-      "name": "every.js",
+      "name": "every",
       "type": "registry:lib",
       "files": [
         {
@@ -64,7 +64,7 @@
       ]
     },
     {
-      "name": "filter.js",
+      "name": "filter",
       "type": "registry:lib",
       "files": [
         {
@@ -80,7 +80,7 @@
       ]
     },
     {
-      "name": "filterMap.js",
+      "name": "filterMap",
       "type": "registry:lib",
       "files": [
         {
@@ -96,7 +96,7 @@
       ]
     },
     {
-      "name": "find.js",
+      "name": "find",
       "type": "registry:lib",
       "files": [
         {
@@ -112,7 +112,7 @@
       ]
     },
     {
-      "name": "findErr.js",
+      "name": "findErr",
       "type": "registry:lib",
       "files": [
         {
@@ -123,7 +123,7 @@
       ]
     },
     {
-      "name": "findMap.js",
+      "name": "findMap",
       "type": "registry:lib",
       "files": [
         {
@@ -139,7 +139,7 @@
       ]
     },
     {
-      "name": "first.js",
+      "name": "first",
       "type": "registry:lib",
       "files": [
         {
@@ -155,7 +155,7 @@
       ]
     },
     {
-      "name": "flat.js",
+      "name": "flat",
       "type": "registry:lib",
       "files": [
         {
@@ -166,7 +166,7 @@
       ]
     },
     {
-      "name": "flatMap.js",
+      "name": "flatMap",
       "type": "registry:lib",
       "files": [
         {
@@ -182,7 +182,7 @@
       ]
     },
     {
-      "name": "forEach.js",
+      "name": "forEach",
       "type": "registry:lib",
       "files": [
         {
@@ -198,7 +198,7 @@
       ]
     },
     {
-      "name": "includes.js",
+      "name": "includes",
       "type": "registry:lib",
       "files": [
         {
@@ -209,7 +209,7 @@
       ]
     },
     {
-      "name": "join.js",
+      "name": "join",
       "type": "registry:lib",
       "files": [
         {
@@ -230,7 +230,7 @@
       ]
     },
     {
-      "name": "map.js",
+      "name": "map",
       "type": "registry:lib",
       "files": [
         {
@@ -246,7 +246,7 @@
       ]
     },
     {
-      "name": "not.js",
+      "name": "not",
       "type": "registry:lib",
       "files": [
         {
@@ -257,7 +257,7 @@
       ]
     },
     {
-      "name": "orderBy.js",
+      "name": "orderBy",
       "type": "registry:lib",
       "files": [
         {
@@ -268,7 +268,7 @@
       ]
     },
     {
-      "name": "partition.js",
+      "name": "partition",
       "type": "registry:lib",
       "files": [
         {
@@ -279,7 +279,7 @@
       ]
     },
     {
-      "name": "partitionMap.js",
+      "name": "partitionMap",
       "type": "registry:lib",
       "files": [
         {
@@ -295,7 +295,7 @@
       ]
     },
     {
-      "name": "perform.js",
+      "name": "perform",
       "type": "registry:lib",
       "files": [
         {
@@ -306,7 +306,7 @@
       ]
     },
     {
-      "name": "reduce.js",
+      "name": "reduce",
       "type": "registry:lib",
       "files": [
         {
@@ -322,7 +322,7 @@
       ]
     },
     {
-      "name": "some.js",
+      "name": "some",
       "type": "registry:lib",
       "files": [
         {
@@ -338,7 +338,7 @@
       ]
     },
     {
-      "name": "sort.js",
+      "name": "sort",
       "type": "registry:lib",
       "files": [
         {
@@ -349,7 +349,7 @@
       ]
     },
     {
-      "name": "sortUniq.js",
+      "name": "sortUniq",
       "type": "registry:lib",
       "files": [
         {
@@ -360,7 +360,7 @@
       ]
     },
     {
-      "name": "take.js",
+      "name": "take",
       "type": "registry:lib",
       "files": [
         {
@@ -371,7 +371,7 @@
       ]
     },
     {
-      "name": "zip.js",
+      "name": "zip",
       "type": "registry:lib",
       "files": [
         {

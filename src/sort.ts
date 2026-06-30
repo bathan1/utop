@@ -3,7 +3,7 @@ export {};
 /**
  * `sort(compareFn, iterable)` returns `ITERABLE` as a new array sorted by `COMPAREFN`.
  *
- * ### Usage
+ * ## Usage
  * ```ts
  * const ascending = sort((a, b) => a - b, [3, 1, 2]);
  * ```
@@ -14,7 +14,7 @@ export {};
  * const ascending = sort((a, b) => a - b, await Array.fromAsync(values()));
  * ```
  *
- * ### Examples
+ * ## Examples
  *
  * @example
  * It returns a new sorted array without changing the source

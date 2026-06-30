@@ -5,7 +5,7 @@ type Seq<T> =
 /**
  * `chunk(limit, iterable)` is a new generator that yields elements of `ITERABLE` materialized as arrays of max size `LIMIT`.
  *
- * ### Usage
+ * ## Usage
  * ```ts
  * const lotsOfRows = createLotsOfData();
  * const insertableChunks = chunk(500, lotsOfRows);
@@ -31,7 +31,7 @@ type Seq<T> =
  * const todosGrouped = chunk(2, todos);
  * ```
  *
- * ### Examples
+ * ## Examples
  * @example
  * It yields arrays of max size `LIMIT`
  * ```ts

@@ -13,7 +13,7 @@ type Predicate<T, S extends T = T> = ((value: T) => boolean) | ((value: T) => va
  * the function evaluates them, as opposed to the usual case where omitting arguments
  * simply indicates the absence of that value in Utop.js.
  *
- * ### Usage
+ * ## Usage
  * ```ts
  * const response = await fetch("http://localhost:3000");
  * if (not(response.ok)) {
@@ -37,7 +37,7 @@ type Predicate<T, S extends T = T> = ((value: T) => boolean) | ((value: T) => va
  *
  * There is no async sugar for the `not` function.
  *
- * ### Examples
+ * ## Examples
  *
  * @example
  * It returns `true` for falsy values

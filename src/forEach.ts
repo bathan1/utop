@@ -3,7 +3,7 @@ import type { Promisable } from "./types.js";
 /**
  * `forEach(callbackfn, iterable)` calls `CALLBACKFN` on each element in `ITERABLE` *immediately* and returns nothing
  *
- * ### Usage
+ * ## Usage
  * ```ts
  * const todos = await fetch('https://dummyjson.com/todos')
  *   .then(async res => (await res.json()).todos);
@@ -22,7 +22,7 @@ import type { Promisable } from "./types.js";
  * await forEach(chunk => console.log('recv %d bytes', chunk.length), res.body)
  * ```
  *
- * ### Examples
+ * ## Examples
  *
  * @example
  * It immediately consumes the iterable

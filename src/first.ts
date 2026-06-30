@@ -4,7 +4,7 @@ import type { Option, Promisable } from "./types";
  * `first(iterable)` returns the first value of `ITERABLE`, or `undefined`
  * if `ITERABLE` is empty.
  *
- * ### Usage
+ * ## Usage
  * ```ts
  * const firstTodo = first([
  *   { todo: "Buy milk" },
@@ -28,7 +28,7 @@ import type { Option, Promisable } from "./types";
  * console.log(value); // 1
  * ```
  *
- * ### Examples
+ * ## Examples
  */
 export function first<T>(
   iterable: AsyncIterable<T>,

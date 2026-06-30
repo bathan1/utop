@@ -3,7 +3,7 @@ import { None, type Option } from "./types.js";
 /**
  * `findMap(callbackfn, iterable)` returns the first defined `CALLBACKFN` result from `ITERABLE`.
  *
- * ### Usage
+ * ## Usage
  * ```ts
  * const parsed = findMap((text) => text ? Number(text) : undefined, ["", "2"]);
  * ```
@@ -14,7 +14,7 @@ import { None, type Option } from "./types.js";
  * const parsed = findMap(Number, await Array.fromAsync(messages()));
  * ```
  *
- * ### Examples
+ * ## Examples
  *
  * @example
  * It returns the first defined callback result

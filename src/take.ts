@@ -6,7 +6,7 @@ type Seq<T> =
  * `take(limit, iterable)` is the new sequence that takes `LIMIT` elements from `ITERABLE` when `LIMIT` is non-negative
  * or throws {@link RangeError} otherwise when `LIMIT` is negative or `NaN`.
  *
- * ### Usage
+ * ## Usage
  * ```ts
  * const todos = await fetch('https://dummyjson.com/todos')
  *   .then(async res => (await res.json()).todos));
@@ -33,7 +33,7 @@ type Seq<T> =
  * }
  * ```
  *
- * ### Examples
+ * ## Examples
  *
  * @example
  * It takes at most `LIMIT` values from `ITERABLE`

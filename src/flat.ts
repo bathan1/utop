@@ -2,7 +2,7 @@ export {};
 /**
  * `flat(iterable)` lazily flattens one level of nested `ITERABLE`.
  *
- * ### Usage
+ * ## Usage
  * ```ts
  * const values = [...flat([[1, 2], new Set([3, 4])])];
  * ```
@@ -13,7 +13,7 @@ export {};
  * const values = [...flat(await Array.fromAsync(groups()))];
  * ```
  *
- * ### Examples
+ * ## Examples
  *
  * @example
  * It flattens one level of any nested iterables

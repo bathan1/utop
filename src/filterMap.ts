@@ -3,7 +3,7 @@ import { type Option } from "./types.js";
 /**
  * `filterMap(callbackfn, iterable)` lazily yields each defined `CALLBACKFN` result for `ITERABLE`.
  *
- * ### Usage
+ * ## Usage
  * ```ts
  * const numbers = [...filterMap((text) => text ? Number(text) : undefined, ["1", "", "3"])];
  * ```
@@ -14,7 +14,7 @@ import { type Option } from "./types.js";
  * const numbers = [...filterMap(Number, await Array.fromAsync(messages()))];
  * ```
  *
- * ### Examples
+ * ## Examples
  *
  * @example
  * It yields only defined callback results

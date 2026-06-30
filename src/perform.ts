@@ -1,7 +1,7 @@
 /**
  * `perform(iterator)` consumes `ITERATOR` and returns its final return value.
  *
- * ### Usage
+ * ## Usage
  * ```ts
  * function* work() { yield "working"; return "done"; }
  * const result = perform(work());
@@ -13,7 +13,7 @@
  * for await (const event of events()) console.log(event);
  * ```
  *
- * ### Examples
+ * ## Examples
  *
  * @example
  * It consumes an iterator and returns its final value

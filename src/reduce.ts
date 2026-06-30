@@ -3,7 +3,7 @@ import type { Promisable } from "./types.js";
 /**
  * `reduce(callbackfn, initialValue, iterable)` folds `ITERABLE` into shape of `INITIAL_VALUE` by threading each element in `ITERABLE` through the reducer `CALLBACKFN`.
  *
- * ### Usage
+ * ## Usage
  * ```ts
  * const todos = await fetch('https://dummyjson.com/todos')
  *   .then(async res => (await res.json()).todos as { todo: string }[]);
@@ -26,7 +26,7 @@ import type { Promisable } from "./types.js";
  * console.log(numBytes);
  * ```
  *
- * ### Examples
+ * ## Examples
  *
  * @example
  * It folds `ITERABLE` into `INITIAL_VALUE`

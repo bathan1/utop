@@ -25,7 +25,7 @@ type Map = {
 /**
  * `map(callbackfn, iterable)` is `CALLBACKFN(x1), CALLBACKFN(x2), ..., CALLBACKFN(xn)` for each `xi` in `ITERABLE`.
  *
- * ### Usage
+ * ## Usage
  * ```ts
  * const todos = await fetch('https://dummyjson.com/todos')
  *   .then(async res => (await res.json()).todos as { todo: string; }[]);
@@ -45,7 +45,7 @@ type Map = {
  * console.log(result[0]);
  * ```
  *
- * ### Compile Time `bind`
+ * ## Compile Time `bind`
  * You can call the {@link map.bind} method which manually overloads the generics
  * for you so you can do partial applications against `CALLBACKFN`
  * without tsc screaming at you.
@@ -56,7 +56,7 @@ type Map = {
  * console.log(doubleText([2, 4, 6]))
  * ```
  *
- * ### Examples
+ * ## Examples
  *
  * @example
  * It calls `CALLBACKFN` on demand

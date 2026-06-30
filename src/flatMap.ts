@@ -3,7 +3,7 @@ import type { Promisable } from "./types.js";
 /**
  * `flatMap(callbackfn, iterable)` lazily yields every value from each iterable returned by `CALLBACKFN` for `ITERABLE`.
  *
- * ### Usage
+ * ## Usage
  * ```ts
  * const words = [...flatMap((line) => line.split(" "), lines)];
  * ```
@@ -15,7 +15,7 @@ import type { Promisable } from "./types.js";
  * const words = await Array.fromAsync(flatMap(async (line) => (await line).split(" "), lines()));
  * ```
  *
- * ### Examples
+ * ## Examples
  *
  * @example
  * It lazily flattens each callback result

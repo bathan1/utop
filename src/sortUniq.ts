@@ -3,7 +3,7 @@ export {};
 /**
  * `sortUniq(compareFn, iterable)` sorts `ITERABLE` with `COMPAREFN` and removes comparator-equal neighbors.
  *
- * ### Usage
+ * ## Usage
  * ```ts
  * const unique = sortUniq((a, b) => a - b, [3, 1, 3, 2]);
  * ```
@@ -14,7 +14,7 @@ export {};
  * const unique = sortUniq((a, b) => a - b, await Array.fromAsync(values()));
  * ```
  *
- * ### Examples
+ * ## Examples
  *
  * @example
  * It sorts and removes comparator-equal values

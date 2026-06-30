@@ -1,0 +1,41 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "tsconfig": "tsconfig.typedoc.json",
+  "entryPoints": ["src/index.ts"],
+  "out": "docs/api",
+  "plugin": [
+    "typedoc-plugin-markdown",
+    "typedoc-vitepress-theme",
+    "typedoc-plugin-frontmatter",
+    "./scripts/typedoc-frontmatter.mjs"
+  ],
+  "docsRoot": "docs",
+  "sidebar": {
+    "autoConfiguration": false
+  },
+  "outputFileStrategy": "members",
+  "membersWithOwnFile": [
+    "Enum",
+    "Variable",
+    "Function",
+    "Class",
+    "Interface",
+    "TypeAlias"
+  ],
+  "entryFileName": "index.md",
+  "fileExtension": ".md",
+  "hideBreadcrumbs": true,
+  "hidePageHeader": true,
+  "expandObjects": true,
+  "indexFormat": "table",
+  "frontmatterGlobals": {},
+  "readme": "none",
+  "excludeInternal": true,
+  "excludePrivate": true,
+  "excludeProtected": true,
+  "validation": {
+    "notExported": false,
+    "invalidLink": false
+  },
+  "cleanOutputDir": true
+}

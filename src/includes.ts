@@ -7,7 +7,7 @@ type Seq<T> =
 /**
  * `includes(searchElement, iterable, fromIndex?)` reports whether `SEARCH_ELEMENT` occurs in `ITERABLE` at or after `FROM_INDEX`.
  *
- * ### Usage
+ * ## Usage
  * ```ts
  * const hasAdmin = includes("admin", roles);
  * ```
@@ -22,7 +22,7 @@ type Seq<T> =
  * const hasAdmin = includes("admin", roles());
  * ```
  *
- * ### Examples
+ * ## Examples
  *
  * @example
  * It finds values at or after `FROM_INDEX`

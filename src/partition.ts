@@ -7,7 +7,7 @@ type Seq<T> =
 /**
  * `partition(predicate, iterable)` splits `ITERABLE` by `PREDICATE` into matching and non-matching values.
  *
- * ### Usage
+ * ## Usage
  * ```ts
  * const [even, odd] = partition((value) => value % 2 === 0, [1, 2, 3, 4]);
  * ```
@@ -24,7 +24,7 @@ type Seq<T> =
  * const [even, odd] = partition((value) => value % 2 === 0, values());
  * ```
  *
- * ### Examples
+ * ## Examples
  *
  * @example
  * It separates matching and non-matching values

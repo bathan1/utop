@@ -5,7 +5,7 @@ type Seq<T> =
 /**
  * `filter(predicate, iterable)` lazily yields the values in `ITERABLE` that satisfy `PREDICATE`.
  *
- * ### Usage
+ * ## Usage
  * ```ts
  * const even = [...filter((value) => value % 2 === 0, [1, 2, 3, 4])];
  * ```
@@ -16,7 +16,7 @@ type Seq<T> =
  * const available = await Array.fromAsync(filter(async (id) => (await fetch(`/items/${id}`)).ok, ids()));
  * ```
  *
- * ### Examples
+ * ## Examples
  *
  * @example
  * It lazily yields matching values and their indexes
