@@ -1,9 +1,12 @@
 ---
 title: zip
-description: |-
-  zip(iterables, options?) yields zip-aggregated elements from ITERABLES using OPTIONS.
-  Excess element behavior is determined by OPTIONS.mode, where:
 ---
+
+# Function: zip()
+
+> **zip**\<`T`, `O`\>(`iterables`, `options?`): `Generator`\<`ZipOutput`\<`T`, `O`\>\>
+
+Defined in: [zip.ts:208](https://github.com/bathan1/utop.js/blob/723af95e5440c257f10c7355cacfd1ff80d7b58b/src/zip.ts#L208)
 
 `zip(iterables, options?)` yields zip-aggregated elements from `ITERABLES` using `OPTIONS`.
 Excess element behavior is determined by `OPTIONS.mode`, where:
@@ -14,18 +17,7 @@ Excess element behavior is determined by `OPTIONS.mode`, where:
 
 When `MODE = "longest"`, the elements from `PADDING` are used to fill in the gaps.
 
-## Installation
-
-```bash
-pnpm dlx shadcn@latest add bathan1/utop/zip.js
-```
-
 ## Usage
-
-```ts
-import { zip } from "@/lib/utop/zip";
-```
-
 ```ts
 const months = ["Nov", "Dec"];
 const days = [1, 2, 3];
@@ -37,6 +29,32 @@ for (const [month, day] of zipped) {
 ```
 
 There is no async sugar for `zip`.
+
+## Examples
+
+## Type Parameters
+
+### T
+
+`T` *extends* readonly `Iterable`\<`unknown`, `any`, `any`\>[]
+
+### O
+
+`O` *extends* `ZipOptions` \| `undefined` = `undefined`
+
+## Parameters
+
+### iterables
+
+readonly \[`T`\]
+
+### options?
+
+`O`
+
+## Returns
+
+`Generator`\<`ZipOutput`\<`T`, `O`\>\>
 
 ## Examples
 
@@ -141,33 +159,3 @@ const thisIsGoingTo = zip(
 
 expect(thisIsGoingTo).toThrow(TypeError);
 ```
-
-## API Reference
-
-> **zip**\<`T`, `O`\>(`iterables`, `options?`): `Generator`\<`ZipOutput`\<`T`, `O`\>\>
-
-Defined in: [zip.ts:208](https://github.com/bathan1/utop.js/blob/17b9b71aa905b6d20aadb7b3219eb62364351b10/src/zip.ts#L208)
-
-### Type Parameters
-
-#### T
-
-`T` *extends* readonly `Iterable`\<`unknown`, `any`, `any`\>[]
-
-#### O
-
-`O` *extends* `ZipOptions` \| `undefined` = `undefined`
-
-### Parameters
-
-#### iterables
-
-readonly \[`T`\]
-
-#### options?
-
-`O`
-
-### Returns
-
-`Generator`\<`ZipOutput`\<`T`, `O`\>\>

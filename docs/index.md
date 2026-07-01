@@ -7,7 +7,7 @@ It is basically the [iterator helper methods](https://developer.mozilla.org/en-U
 but exposed as standalone ESM exports so you can it from the "top-level":
 
 ```ts
-import { forEach } from "@/lib/utop/forEach.js";
+import { forEach } from "@/lib/utop/forEach";
 
 forEach(console.log, ["Hello", "Utop", ".js", "!"])
 ```
@@ -17,7 +17,7 @@ a [`Map`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Glob
 object that implements the Iterable Protocol.
 
 ```ts
-import { forEach } from "@/lib/utop/forEach.js";
+import { forEach } from "@/lib/utop/forEach";
 
 forEach(console.log, new Set(["Hello", "Utop", ".js", "!"]));
 forEach(console.log, new Map([
@@ -102,7 +102,7 @@ Function overloads for the standard helper methods in Utop.js can be roughly spl
 Compile-time only overloads refer to function overloads where we don't
 have to touch the implementation to satisfy its signature.
 
-In [`findErr.js`](https://github.com/bathan1/utop/blob/main/src/findErr.ts), for example, we can see that it includes the following overloads:
+In [`findErr.js`](https://github.com/bathan1/utop.js/blob/main/src/findErr.ts), for example, we can see that it includes the following overloads:
 
 ```ts
 // src/findErr.ts
@@ -206,10 +206,10 @@ which assumes the following:
 1. You are using TypeScript
 2. You have a bundler capable of compiling `ESNext` source code
 
-Each function is an individual registry item with the naming convention of `${FUNCTION_NAME}.js`. To add `map` for example:
+Each function is an individual registry item named according to its corresponding export. To add `map` for example:
 
 ```bash
-pnpm dlx shadcn@latest add bathan1/utop/map.js
+pnpm dlx shadcn@latest add bathan1/utop.js/map
 ```
 
 `shadcn` will take care of writing the `utop` directory to your `@lib` folder
@@ -217,7 +217,7 @@ for your project (.e.g. `@/lib/utop`) along with any dependencies, which is
 where all the library functions can be imported from:
 
 ```ts
-import { map } from "@/lib/utop/map.js";
+import { map } from "@/lib/utop/map";
 ```
 
 As of the time of writing, there is a [known issue](https://github.com/vercel/next.js/issues/82945) in Next.js with importing native relative path modules. The workaround is to use a turbopack loader rule that looks something like this:
@@ -260,7 +260,7 @@ You can simply copy and paste the js script from above or use the
 registry item that places it in your project's root:
 
 ```bash
-pnpm dlx shadcn@latest add bathan1/utop/import-rewrite-loader.cjs
+pnpm dlx shadcn@latest add bathan1/utop.js/import-rewrite-loader.cjs
 ```
 
 And that's it!
@@ -272,7 +272,7 @@ yourself and it will "just work" on TypeScript projects.
 
 The benefit of this approach is you have greater control over where to place your files. The drawback is that
 for functions that depend on other functions in the library (i.e. `import` them), you will need to manually handle
-copy + pasting them as well. All of the source files can be found under the [`src/`](https://github.com/bathan1/utop/tree/main/src) directory.
+copy + pasting them as well. All of the source files can be found under the [`src/`](https://github.com/bathan1/utop.js/tree/main/src) directory.
 
 > And since there is no `npm` release, vanilla JavaScript projects will need to transpile the typescript source code themselves,
 so you might want to reconsider if adding this to your vanilla project is worth it or not (though the lack of dependencies should

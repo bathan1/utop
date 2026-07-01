@@ -1,4 +1,6 @@
 allowBuilds:
   esbuild: false
+  sharp: true
+  workerd: true
 minimumReleaseAgeExclude:
   - prettier@3.8.5
