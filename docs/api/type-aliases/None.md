@@ -6,4 +6,4 @@ title: None
 
 > **None** = `undefined`
 
-Defined in: [types.ts:64](https://github.com/bathan1/utop.js/blob/e64f61e6061ac2c61e2caf3dd777f244debf6a43/src/types.ts#L64)
+Defined in: [types.ts:64](https://github.com/bathan1/utop.js/blob/125dbb4fad39d300a5134b78adea5914856f4dcf/src/types.ts#L64)

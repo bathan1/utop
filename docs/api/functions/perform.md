@@ -41,7 +41,7 @@ expect(perform(work())).toBe("done");
 
 > **perform**\<`T`, `R`\>(`iterator`): `R`
 
-Defined in: [perform.ts:27](https://github.com/bathan1/utop.js/blob/e64f61e6061ac2c61e2caf3dd777f244debf6a43/src/perform.ts#L27)
+Defined in: [perform.ts:27](https://github.com/bathan1/utop.js/blob/125dbb4fad39d300a5134b78adea5914856f4dcf/src/perform.ts#L27)
 
 ### Type Parameters
 

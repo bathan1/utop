@@ -91,7 +91,7 @@ await expect(find((value) => value > 2, values())).resolves.toBeUndefined();
 
 > **find**\<`T`, `S`\>(`predicate`, `iterable`): `Promise`\<[`Option`](../type-aliases/Option.md)\<`S`\>\>
 
-Defined in: [find.ts:78](https://github.com/bathan1/utop.js/blob/e64f61e6061ac2c61e2caf3dd777f244debf6a43/src/find.ts#L78)
+Defined in: [find.ts:78](https://github.com/bathan1/utop.js/blob/125dbb4fad39d300a5134b78adea5914856f4dcf/src/find.ts#L78)
 
 #### Type Parameters
 
@@ -121,7 +121,7 @@ Defined in: [find.ts:78](https://github.com/bathan1/utop.js/blob/e64f61e6061ac2c
 
 > **find**\<`T`\>(`predicate`, `iterable`): `Promise`\<[`Option`](../type-aliases/Option.md)\<`T`\>\>
 
-Defined in: [find.ts:82](https://github.com/bathan1/utop.js/blob/e64f61e6061ac2c61e2caf3dd777f244debf6a43/src/find.ts#L82)
+Defined in: [find.ts:82](https://github.com/bathan1/utop.js/blob/125dbb4fad39d300a5134b78adea5914856f4dcf/src/find.ts#L82)
 
 #### Type Parameters
 
@@ -147,7 +147,7 @@ Defined in: [find.ts:82](https://github.com/bathan1/utop.js/blob/e64f61e6061ac2c
 
 > **find**\<`T`, `S`\>(`predicate`, `iterable`): [`Option`](../type-aliases/Option.md)\<`S`\>
 
-Defined in: [find.ts:86](https://github.com/bathan1/utop.js/blob/e64f61e6061ac2c61e2caf3dd777f244debf6a43/src/find.ts#L86)
+Defined in: [find.ts:86](https://github.com/bathan1/utop.js/blob/125dbb4fad39d300a5134b78adea5914856f4dcf/src/find.ts#L86)
 
 #### Type Parameters
 
@@ -177,7 +177,7 @@ Defined in: [find.ts:86](https://github.com/bathan1/utop.js/blob/e64f61e6061ac2c
 
 > **find**\<`T`\>(`predicate`, `iterable`): [`Option`](../type-aliases/Option.md)\<`T`\>
 
-Defined in: [find.ts:90](https://github.com/bathan1/utop.js/blob/e64f61e6061ac2c61e2caf3dd777f244debf6a43/src/find.ts#L90)
+Defined in: [find.ts:90](https://github.com/bathan1/utop.js/blob/125dbb4fad39d300a5134b78adea5914856f4dcf/src/find.ts#L90)
 
 #### Type Parameters
 

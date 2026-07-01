@@ -78,7 +78,7 @@ expect(odds).toEqual([1, 3]);
 
 > **not**\<`T`\>(`value`): `value is Extract<T, Falsy>`
 
-Defined in: [not.ts:72](https://github.com/bathan1/utop.js/blob/e64f61e6061ac2c61e2caf3dd777f244debf6a43/src/not.ts#L72)
+Defined in: [not.ts:72](https://github.com/bathan1/utop.js/blob/125dbb4fad39d300a5134b78adea5914856f4dcf/src/not.ts#L72)
 
 #### Type Parameters
 
@@ -100,7 +100,7 @@ Defined in: [not.ts:72](https://github.com/bathan1/utop.js/blob/e64f61e6061ac2c6
 
 > **not**\<`T`, `S`\>(`predicate`, `value`): `value is Exclude<T, S>`
 
-Defined in: [not.ts:73](https://github.com/bathan1/utop.js/blob/e64f61e6061ac2c61e2caf3dd777f244debf6a43/src/not.ts#L73)
+Defined in: [not.ts:73](https://github.com/bathan1/utop.js/blob/125dbb4fad39d300a5134b78adea5914856f4dcf/src/not.ts#L73)
 
 #### Type Parameters
 
@@ -130,7 +130,7 @@ Defined in: [not.ts:73](https://github.com/bathan1/utop.js/blob/e64f61e6061ac2c6
 
 > **not**\<`T`\>(`predicate`, `value`): `boolean`
 
-Defined in: [not.ts:77](https://github.com/bathan1/utop.js/blob/e64f61e6061ac2c61e2caf3dd777f244debf6a43/src/not.ts#L77)
+Defined in: [not.ts:77](https://github.com/bathan1/utop.js/blob/125dbb4fad39d300a5134b78adea5914856f4dcf/src/not.ts#L77)
 
 #### Type Parameters
 

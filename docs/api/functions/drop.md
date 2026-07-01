@@ -68,7 +68,7 @@ expect(droppedFirstTwo).toEqual(["c", "d"]);
 
 > **drop**\<`T`\>(`limit`, `iterable`): `AsyncGenerator`\<`T`, `void`, `unknown`\>
 
-Defined in: [drop.ts:58](https://github.com/bathan1/utop.js/blob/e64f61e6061ac2c61e2caf3dd777f244debf6a43/src/drop.ts#L58)
+Defined in: [drop.ts:58](https://github.com/bathan1/utop.js/blob/125dbb4fad39d300a5134b78adea5914856f4dcf/src/drop.ts#L58)
 
 #### Type Parameters
 
@@ -94,7 +94,7 @@ Defined in: [drop.ts:58](https://github.com/bathan1/utop.js/blob/e64f61e6061ac2c
 
 > **drop**\<`T`\>(`limit`, `iterable`): `Generator`\<`T`, `void`, `unknown`\>
 
-Defined in: [drop.ts:62](https://github.com/bathan1/utop.js/blob/e64f61e6061ac2c61e2caf3dd777f244debf6a43/src/drop.ts#L62)
+Defined in: [drop.ts:62](https://github.com/bathan1/utop.js/blob/125dbb4fad39d300a5134b78adea5914856f4dcf/src/drop.ts#L62)
 
 #### Type Parameters
 

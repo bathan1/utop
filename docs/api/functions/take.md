@@ -78,7 +78,7 @@ expect(await Array.fromAsync(take(2, count()))).toEqual([1, 2]);
 
 > **take**\<`T`\>(`limit`, `iterable`): `AsyncGenerator`\<`T`, `void`, `unknown`\>
 
-Defined in: [take.ts:67](https://github.com/bathan1/utop.js/blob/e64f61e6061ac2c61e2caf3dd777f244debf6a43/src/take.ts#L67)
+Defined in: [take.ts:67](https://github.com/bathan1/utop.js/blob/125dbb4fad39d300a5134b78adea5914856f4dcf/src/take.ts#L67)
 
 #### Type Parameters
 
@@ -104,7 +104,7 @@ Defined in: [take.ts:67](https://github.com/bathan1/utop.js/blob/e64f61e6061ac2c
 
 > **take**\<`T`\>(`limit`, `iterable`): `Generator`\<`T`, `void`, `unknown`\>
 
-Defined in: [take.ts:71](https://github.com/bathan1/utop.js/blob/e64f61e6061ac2c61e2caf3dd777f244debf6a43/src/take.ts#L71)
+Defined in: [take.ts:71](https://github.com/bathan1/utop.js/blob/125dbb4fad39d300a5134b78adea5914856f4dcf/src/take.ts#L71)
 
 #### Type Parameters
 

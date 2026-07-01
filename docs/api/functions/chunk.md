@@ -93,7 +93,7 @@ expect(chunked).toEqual([
 
 > **chunk**\<`T`\>(`limit`, `iterable`): `Generator`\<`T`[], `void`, `unknown`\>
 
-Defined in: [chunk.ts:83](https://github.com/bathan1/utop.js/blob/e64f61e6061ac2c61e2caf3dd777f244debf6a43/src/chunk.ts#L83)
+Defined in: [chunk.ts:83](https://github.com/bathan1/utop.js/blob/125dbb4fad39d300a5134b78adea5914856f4dcf/src/chunk.ts#L83)
 
 #### Type Parameters
 
@@ -119,7 +119,7 @@ Defined in: [chunk.ts:83](https://github.com/bathan1/utop.js/blob/e64f61e6061ac2
 
 > **chunk**\<`T`\>(`limit`, `iterable`): `AsyncGenerator`\<`T`[], `void`, `unknown`\>
 
-Defined in: [chunk.ts:87](https://github.com/bathan1/utop.js/blob/e64f61e6061ac2c61e2caf3dd777f244debf6a43/src/chunk.ts#L87)
+Defined in: [chunk.ts:87](https://github.com/bathan1/utop.js/blob/125dbb4fad39d300a5134b78adea5914856f4dcf/src/chunk.ts#L87)
 
 #### Type Parameters
 

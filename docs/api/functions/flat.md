@@ -35,7 +35,7 @@ expect([...flat([[1, 2], new Set([3, 4])])]).toEqual([1, 2, 3, 4]);
 
 > **flat**\<`T`\>(`iterable`): `Generator`\<`T`, `void`, `unknown`\>
 
-Defined in: [flat.ts:22](https://github.com/bathan1/utop.js/blob/e64f61e6061ac2c61e2caf3dd777f244debf6a43/src/flat.ts#L22)
+Defined in: [flat.ts:22](https://github.com/bathan1/utop.js/blob/125dbb4fad39d300a5134b78adea5914856f4dcf/src/flat.ts#L22)
 
 ### Type Parameters
 

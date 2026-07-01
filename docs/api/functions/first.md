@@ -69,7 +69,7 @@ await expect(first(values())).resolves.toBe("foo");
 
 > **first**\<`T`\>(`iterable`): `Promise`\<[`Option`](../type-aliases/Option.md)\<`T`\>\>
 
-Defined in: [first.ts:55](https://github.com/bathan1/utop.js/blob/e64f61e6061ac2c61e2caf3dd777f244debf6a43/src/first.ts#L55)
+Defined in: [first.ts:55](https://github.com/bathan1/utop.js/blob/125dbb4fad39d300a5134b78adea5914856f4dcf/src/first.ts#L55)
 
 #### Type Parameters
 
@@ -91,7 +91,7 @@ Defined in: [first.ts:55](https://github.com/bathan1/utop.js/blob/e64f61e6061ac2
 
 > **first**\<`T`\>(`iterable`): [`Option`](../type-aliases/Option.md)\<`T`\>
 
-Defined in: [first.ts:58](https://github.com/bathan1/utop.js/blob/e64f61e6061ac2c61e2caf3dd777f244debf6a43/src/first.ts#L58)
+Defined in: [first.ts:58](https://github.com/bathan1/utop.js/blob/125dbb4fad39d300a5134b78adea5914856f4dcf/src/first.ts#L58)
 
 #### Type Parameters
 

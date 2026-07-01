@@ -7,7 +7,7 @@ description: "`Promisable<T>` is either `T` itself or a Promise of `T`"
 
 > **Promisable**\<`T`\> = `T` \| `Promise`\<`T`\>
 
-Defined in: [types.ts:70](https://github.com/bathan1/utop.js/blob/e64f61e6061ac2c61e2caf3dd777f244debf6a43/src/types.ts#L70)
+Defined in: [types.ts:70](https://github.com/bathan1/utop.js/blob/125dbb4fad39d300a5134b78adea5914856f4dcf/src/types.ts#L70)
 
 `Promisable<T>` is either `T` itself or a Promise of `T`
 

@@ -48,7 +48,7 @@ expect(await some(async (value) => value === 2, values())).toBe(true);
 
 > **some**\<`T`\>(`predicate`, `iterable`): `Promise`\<`boolean`\>
 
-Defined in: [some.ts:35](https://github.com/bathan1/utop.js/blob/e64f61e6061ac2c61e2caf3dd777f244debf6a43/src/some.ts#L35)
+Defined in: [some.ts:35](https://github.com/bathan1/utop.js/blob/125dbb4fad39d300a5134b78adea5914856f4dcf/src/some.ts#L35)
 
 #### Type Parameters
 
@@ -74,7 +74,7 @@ Defined in: [some.ts:35](https://github.com/bathan1/utop.js/blob/e64f61e6061ac2c
 
 > **some**\<`T`\>(`predicate`, `iterable`): `boolean`
 
-Defined in: [some.ts:39](https://github.com/bathan1/utop.js/blob/e64f61e6061ac2c61e2caf3dd777f244debf6a43/src/some.ts#L39)
+Defined in: [some.ts:39](https://github.com/bathan1/utop.js/blob/125dbb4fad39d300a5134b78adea5914856f4dcf/src/some.ts#L39)
 
 #### Type Parameters
 

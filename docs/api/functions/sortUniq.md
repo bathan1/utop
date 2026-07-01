@@ -35,7 +35,7 @@ expect(sortUniq((a, b) => a - b, [3, 1, 2, 3, 1])).toEqual([1, 2, 3]);
 
 > **sortUniq**\<`T`\>(`compareFn`, `iterable`): `T`[]
 
-Defined in: [sortUniq.ts:23](https://github.com/bathan1/utop.js/blob/e64f61e6061ac2c61e2caf3dd777f244debf6a43/src/sortUniq.ts#L23)
+Defined in: [sortUniq.ts:23](https://github.com/bathan1/utop.js/blob/125dbb4fad39d300a5134b78adea5914856f4dcf/src/sortUniq.ts#L23)
 
 ### Type Parameters
 

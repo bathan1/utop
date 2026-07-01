@@ -12,7 +12,7 @@ description: |-
 
 > **Some**\<`T`\> = `NonNullable`\<`T`\>
 
-Defined in: [types.ts:63](https://github.com/bathan1/utop.js/blob/e64f61e6061ac2c61e2caf3dd777f244debf6a43/src/types.ts#L63)
+Defined in: [types.ts:63](https://github.com/bathan1/utop.js/blob/125dbb4fad39d300a5134b78adea5914856f4dcf/src/types.ts#L63)
 
 `Some<T>` is just `NonNullable<T>`. Even though `null` is not the
 same as our userland [None](../variables/None.md) since that is just an alias for

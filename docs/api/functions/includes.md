@@ -47,7 +47,7 @@ expect(includes(NaN, [1, NaN, 3])).toBe(true);
 
 > **includes**\<`T`\>(`searchElement`, `iterable`, `fromIndex?`): `Promise`\<`boolean`\>
 
-Defined in: [includes.ts:38](https://github.com/bathan1/utop.js/blob/e64f61e6061ac2c61e2caf3dd777f244debf6a43/src/includes.ts#L38)
+Defined in: [includes.ts:38](https://github.com/bathan1/utop.js/blob/125dbb4fad39d300a5134b78adea5914856f4dcf/src/includes.ts#L38)
 
 #### Type Parameters
 
@@ -77,7 +77,7 @@ Defined in: [includes.ts:38](https://github.com/bathan1/utop.js/blob/e64f61e6061
 
 > **includes**\<`T`\>(`searchElement`, `iterable`, `fromIndex?`): `boolean`
 
-Defined in: [includes.ts:43](https://github.com/bathan1/utop.js/blob/e64f61e6061ac2c61e2caf3dd777f244debf6a43/src/includes.ts#L43)
+Defined in: [includes.ts:43](https://github.com/bathan1/utop.js/blob/125dbb4fad39d300a5134b78adea5914856f4dcf/src/includes.ts#L43)
 
 #### Type Parameters
 
